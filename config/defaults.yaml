@@ -1,0 +1,67 @@
+# config/defaults.yaml
+input-files:
+# Front Matter (Caratula, indices, etc.)
+  - report/01-front-matter/01-cover.md
+  - report/01-front-matter/02-version-history.md
+  - report/01-front-matter/03-collaboration-insights.md
+  - report/01-front-matter/04-content.md
+  - report/01-front-matter/05-student-outcome.md
+  
+  # Capitulo 1
+  - report/10-chapter-one/11-startup-profile.md
+  - report/10-chapter-one/12-solution-profile.md
+  - report/10-chapter-one/13-segmentos-objetivo.md
+  
+  # Capitulo 2
+  - report/20-chapter-two/21-competidores.md
+  - report/20-chapter-two/22-entrevistas.md
+  - report/20-chapter-two/23-needfinding.md
+  - report/20-chapter-two/24-big-picture-eventstorming.md
+  - report/20-chapter-two/25-ubiquitous-language.md
+  
+  # Capitulo 3
+  - report/30-chapter-three/31-user-stories.md
+  - report/30-chapter-three/32-impact-mapping.md
+  - report/30-chapter-three/33-product-backlog.md
+  
+  # Capitulo 4
+  - report/40-chapter-four/41-style-guidelines.md
+  - report/40-chapter-four/42-information-architecture.md
+  - report/40-chapter-four/43-landing-page-ui-design.md
+  - report/40-chapter-four/44-web-applications-ux-ui-design.md
+  - report/40-chapter-four/45-web-applications-prototyping.md
+  - report/40-chapter-four/46-domain-driven-software-architecture.md
+  - report/40-chapter-four/47-software-object-oriented-design.md
+  - report/40-chapter-four/48-database-design.md
+  
+  # Capitulo 5
+  - report/50-chapter-five/51-software-configuration-management.md
+  - report/50-chapter-five/52-landingpage-services-&-applications-implementation.md
+  - report/50-chapter-five/53-validation-interviews.md
+  - report/50-chapter-five/54-video-about-the-product.md
+  
+  # Conclusiones, Bibliografia y Anexos
+  - report/60-conclusions/61-conclusions.md
+  - report/60-conclusions/62-video-about-the-team.md
+  - report/70-literature/71-bibliography.md
+  - report/80-annexes/81-annexes.md
+
+# Aislamiento para evitar colisiones de IDs entre capitulos
+file-scope: true
+
+# Motor PDF moderno con soporte nativo UTF-8
+pdf-engine: lualatex
+
+# Configuraciones de variables y tabla de contenidos
+toc: false
+toc-depth: 3
+variables:
+  geometry:
+    - margin=1in
+  mainfont: "Arial"
+  colorlinks: true
+  header-includes:
+    - \usepackage{graphicx}
+
+# Salida del archivo respetando la nomenclatura del curso
+output-file: build/upc-pre-202620-1asi0730-16712-CodeBrokers-report-av1.pdf
