@@ -87,8 +87,31 @@ Por ello, el impacto del problema puede observarse en tres dimensiones principal
 
 
 #### 1.2.2.2. Lean UX Assumptions
+Los siguientes supuestos establecen las creencias iniciales del equipo sobre los factores que influenciarán en el exito de VitaLink.
 
+Business Outcomes (Resultados de Negocio)
+Reducir el tiempo de respuesta ante situaciones de riesgo detectadas al contar con un sistema de alertas que sustituya la dependencia de la supervision presencial constante.
+Incrementar la adopcion de mecanismos de monitoreo preventivo entre familias con adultos mayores durante los primeros meses  de operacion dado que actualmente el seguimiento depende de mecanismos manuales e informales.
+Consolidar alianzas con clinicas, hospitales y profesionales de saud que se integren como proveedores de atencion dentro del ecosistema, mejorando la eficiencia en la gestion de incidentes.
 
+User & User Outcomes (Usuarios y Resultados esperados)
+Adultos mayores contaran con mayor seguridad y acompañamiento durante sus actividades cotidianes incluso cuando no esten acompañados fisicamente.
+Familiares y cuidadores podran acceder a informacion oportuna sobre el estado del adulto mayor y actuar con rapidez ante una alerta, reduciendo la incertidumbre y la dependencia de la comunicacion manual.
+Clinicas y hospitales podran recibir alertas y datos relevantes de manera oportuna facilitando una gestion de atencion mas agil y mejor informada.
+
+Features (Caracteristicas de la solucion)
+Las propuestas de VitaLink se sustentan en las siguientes funciones:
+Monitoreo preventivo: Seguimiento de indicadores relevantes del adulto mayor para identificar posibles situaciones de riesgo de manera temprana.
+Sistema de alertas: Notificaciones automaticas a familiares y/o proveedores de salud ante la deteccion de una situacion que requiera atencion.
+Centralizacion de informacion: Un espacio unico donde se consolide la informacion de salud del adulto mayor, actualmente dispersa entre distintos actores.
+Canal de comunicacion familiar-proveedor: Mecanismo que conecte de forma directa y eficiente a los familiares con clinicas, hospitales o profesionales de salud disponibles.
+Panel de seguimiento: Interfaz que permita a los familiares y/o cuidadores visualizar el estado general del adulto mayor de forma remota.
+
+Risk & Assumptions (Riesgos y Supuestos)
+Supuesto 1: Los familiares adoptaran la aplicacion si perciben que reduce de forma significativa su incertidumbre respecto al bienestar del adulto mayor.
+Supuesto 2: Los adultos mayores aceptaran el uso de herramientas digitales de monitoreo si la interfaz es simple y accesible.
+Supuesto 3: Las clinicas y hospitales estaran dispuestos a intregrarse dentro del ecosistema si el sistema de alertas es confiable y reduce tiempos de gestion.
+Supuesto 4: La centralizacion de la informacion de salud permitira anticipar situaciones de riesgo que hoy pasan desapercibidas por la dispersion de datos entre distintos actores.
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
 
