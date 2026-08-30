@@ -83,7 +83,11 @@ Por ello, el impacto del problema puede observarse en tres dimensiones principal
 ### 1.2.2 Lean UX Process
 
 #### 1.2.2.1. Lean UX Problem Statements
+Problem Statement 1: Monitoreo Preventivo y Seguridad del Adulto Mayor
+La seguridad y el bienestar del adulto mayor se ven comprometidos debido a la ausencia de un sistema digital que permita un monitoreo continuo y la deteccion oportuna de situaciones de riesgo cuando no se encuentra acompañado. Actualmente el acompañamiento depende en gran medida de la supervision presencial y de comunicaciones manuales (llamadas, mensajes o visitas), lo que puede provocar que una caida, una alteracion de signos vitales u otra situacion de riesgo pase desapercivida hasta que el problema se agrava. ¿Como podemos diseñar una solucion tecnologica que permita monitorear de forma preventiva el estado del aadulto mayor y generar alertas oportunas ante posibles situacioens de riesgo?
 
+Problem Statement 2: Comunicacion y Conexion entre Familiares y  Proveedores de Salud
+La tranquilidad y capacidad de respuesta de los familiares y cuidadores se ven limitadas debido a la falta de un canal centralizado que conecte al adulto mayor, su red familiar y los proveedores de atencion en salud. La informacion relacionada con la salud del adulto mayor suele encontrarse dispersa entre familiares, documentos y distintos proveedores, lo que dificulta el seguimiento y retrasa la toma de decisiones ante un incidente. Esta dispersion, sumada a la flata de un mecanismo de contacto inmediato con clinicas y hospitales genera demoras entre la aparicion de una situacion de riesgo y el inicio de la atencion correspondiente. ¿Como podemos diseñar una plataforma que centralice la informacion de salud del adulto mayor y facilite una comunicacion eficiente entre familiares, cuidadores y proveedores de servicios de salud?
 
 
 #### 1.2.2.2. Lean UX Assumptions
