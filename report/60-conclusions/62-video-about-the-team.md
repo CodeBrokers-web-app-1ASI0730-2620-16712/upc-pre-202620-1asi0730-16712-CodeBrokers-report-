@@ -1,2 +1,2 @@
-# 6.2. Video about the team
+## 6.2. Video about the team
 
