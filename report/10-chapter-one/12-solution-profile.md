@@ -112,6 +112,7 @@ Canal de comunicacion familiar-proveedor: Mecanismo que conecte de forma directa
 Panel de seguimiento: Interfaz que permita a los familiares y/o cuidadores visualizar el estado general del adulto mayor de forma remota.
 
 Risk & Assumptions (Riesgos y Supuestos)
+
 Supuesto 1: Los familiares adoptaran la aplicacion si perciben que reduce de forma significativa su incertidumbre respecto al bienestar del adulto mayor.
 
 Supuesto 2: Los adultos mayores aceptaran el uso de herramientas digitales de monitoreo si la interfaz es simple y accesible.
