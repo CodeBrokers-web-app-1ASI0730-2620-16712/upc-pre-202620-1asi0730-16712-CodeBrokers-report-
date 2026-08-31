@@ -113,8 +113,11 @@ Panel de seguimiento: Interfaz que permita a los familiares y/o cuidadores visua
 
 Risk & Assumptions (Riesgos y Supuestos)
 Supuesto 1: Los familiares adoptaran la aplicacion si perciben que reduce de forma significativa su incertidumbre respecto al bienestar del adulto mayor.
+
 Supuesto 2: Los adultos mayores aceptaran el uso de herramientas digitales de monitoreo si la interfaz es simple y accesible.
+
 Supuesto 3: Las clinicas y hospitales estaran dispuestos a intregrarse dentro del ecosistema si el sistema de alertas es confiable y reduce tiempos de gestion.
+
 Supuesto 4: La centralizacion de la informacion de salud permitira anticipar situaciones de riesgo que hoy pasan desapercibidas por la dispersion de datos entre distintos actores.
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
