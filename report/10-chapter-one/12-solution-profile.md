@@ -122,7 +122,39 @@ Supuesto 3: Las clinicas y hospitales estaran dispuestos a intregrarse dentro de
 Supuesto 4: La centralizacion de la informacion de salud permitira anticipar situaciones de riesgo que hoy pasan desapercibidas por la dispersion de datos entre distintos actores.
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
+* **Declaracion de Hipotesis 1**
+  * **Creemos que lograremos** un incremento del 30% en la retencion mensual de la plataforma
+  * **Si** los cuidadores familiares principales
+  * **Obtienen** tranquilidad continua respecto a los signos vitales diarios y la estabilidad de salud de sus familiares de la tercera edad
+  * **Con** un panel interactivo en tiempo real que visualiza metricas de telemetria IoT simulada (frecuencia cardiaca, SpO2 y deteccion de caidas).
 
+* **Declaracion de Hipotesis 2**
+  * **Creemos que lograremos** una reduccion del 50% en el tiempo promedio requerido para coordinar una consulta medica de urgencia
+  * **Si** los cuidadores familiares
+  * **Obtienen** el agendamiento inmediato de citas medicas sin necesidad de buscar o contactar manualmente a multiples proveedores de salud
+  * **Con** una funcionalidad de auto-agendamiento inteligente que sugiere y reserva cupos optimos en centros medicos afiliados cercanos.
+
+* **Declaracion de Hipotesis 3**
+  * **Creemos que lograremos** un crecimiento del 40% en convenios con clinicas afiliadas y expansion de la red de salud
+  * **Si** los proveedores de salud y el personal de recepcion clinica
+  * **Obtienen** admisiones de pacientes pre-triados y acceso instantaneo al historial biometrico cronologico antes de la llegada del paciente
+  * **Con** un modulo centralizado de historial de salud del paciente y exportacion de triaje.
+
+* **Declaracion de Hipotesis 4**
+  * **Creemos que lograremos** una tasa de confirmacion del 75% en alertas de emergencia dentro de los primeros 5 minutos
+  * **Si** los tutores familiares designados
+  * **Obtienen** conocimiento inmediato de umbrales fisiologicos fuera de rango o incidentes criticos detectados
+  * **Con** una integracion de notificaciones externas automatizadas mediante SMS y servicios de mensajeria de emergencia.
+
+* **Declaracion de Hipotesis 5**
+  * **Creemos que lograremos** una tasa de adopcion del 35% en hogares de bajos recursos sin cobertura de seguro medico privado
+  * **Si** los adultos mayores sin seguro y sus cuidadores
+  * **Obtienen** acceso a consultas preventivas a bajo costo y derivacion directa hacia redes comunitarias de salud
+  * **Con** un modulo integrado de atencion a tarifa social coordinado junto a organizaciones comunitarias de salud.
+  * **We believe we will achieve** a 35% adoption rate among low-income households without private healthcare coverage
+  * **If** uninsured elderly patients and their caregivers
+  * **Attain** access to low-cost preventive consultations and direct referral to community health networks
+  * **With** an integrated social-rate care module coordinated alongside verified community healthcare organizations.
 
 
 #### 1.2.2.4. Lean UX Canvas
