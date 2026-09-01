@@ -55,6 +55,8 @@ A largo plazo, VitaLink podrá evolucionar mediante la integración con disposit
 
 \end{tabular}
 
+\end{tabular}
+
 \vspace{0.8cm}
 
 \noindent
