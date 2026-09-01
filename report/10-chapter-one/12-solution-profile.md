@@ -122,39 +122,41 @@ Supuesto 3: Las clinicas y hospitales estaran dispuestos a intregrarse dentro de
 Supuesto 4: La centralizacion de la informacion de salud permitira anticipar situaciones de riesgo que hoy pasan desapercibidas por la dispersion de datos entre distintos actores.
 
 #### 1.2.2.3. Lean UX Hypothesis Statements
-* **Declaracion de Hipotesis 1**
-  * **Creemos que lograremos** un incremento del 30% en la retencion mensual de la plataforma
-  * **Si** los cuidadores familiares principales
-  * **Obtienen** tranquilidad continua respecto a los signos vitales diarios y la estabilidad de salud de sus familiares de la tercera edad
-  * **Con** un panel interactivo en tiempo real que visualiza metricas de telemetria IoT simulada (frecuencia cardiaca, SpO2 y deteccion de caidas).
 
-* **Declaracion de Hipotesis 2**
-  * **Creemos que lograremos** una reduccion del 50% en el tiempo promedio requerido para coordinar una consulta medica de urgencia
-  * **Si** los cuidadores familiares
-  * **Obtienen** el agendamiento inmediato de citas medicas sin necesidad de buscar o contactar manualmente a multiples proveedores de salud
-  * **Con** una funcionalidad de auto-agendamiento inteligente que sugiere y reserva cupos optimos en centros medicos afiliados cercanos.
+* **Declaracion de Hipotesis 1:**
 
-* **Declaracion de Hipotesis 3**
-  * **Creemos que lograremos** un crecimiento del 40% en convenios con clinicas afiliadas y expansion de la red de salud
-  * **Si** los proveedores de salud y el personal de recepcion clinica
-  * **Obtienen** admisiones de pacientes pre-triados y acceso instantaneo al historial biometrico cronologico antes de la llegada del paciente
-  * **Con** un modulo centralizado de historial de salud del paciente y exportacion de triaje.
+  * **Creemos que lograremos** una mayor adopcion del monitoreo preventivo y una reduccion de situaciones de riesgo detectadas tardíamente
+  * **Si** los familiares y cuidadores responsables de adultos mayores
+  * **Obtienen** acceso continuo a informacion relevante sobre el estado del adulto mayor, incluso cuando no se encuentran fisicamente con el
+  * **Con** una funcionalidad de monitoreo preventivo que permita realizar el seguimiento de indicadores relevantes e identificar posibles situaciones de riesgo.
 
-* **Declaracion de Hipotesis 4**
-  * **Creemos que lograremos** una tasa de confirmacion del 75% en alertas de emergencia dentro de los primeros 5 minutos
-  * **Si** los tutores familiares designados
-  * **Obtienen** conocimiento inmediato de umbrales fisiologicos fuera de rango o incidentes criticos detectados
-  * **Con** una integracion de notificaciones externas automatizadas mediante SMS y servicios de mensajeria de emergencia.
+* **Declaracion de Hipotesis 2:**
 
-* **Declaracion de Hipotesis 5**
-  * **Creemos que lograremos** una tasa de adopcion del 35% en hogares de bajos recursos sin cobertura de seguro medico privado
-  * **Si** los adultos mayores sin seguro y sus cuidadores
-  * **Obtienen** acceso a consultas preventivas a bajo costo y derivacion directa hacia redes comunitarias de salud
-  * **Con** un modulo integrado de atencion a tarifa social coordinado junto a organizaciones comunitarias de salud.
-  * **We believe we will achieve** a 35% adoption rate among low-income households without private healthcare coverage
-  * **If** uninsured elderly patients and their caregivers
-  * **Attain** access to low-cost preventive consultations and direct referral to community health networks
-  * **With** an integrated social-rate care module coordinated alongside verified community healthcare organizations.
+  * **Creemos que lograremos** reducir el tiempo de respuesta ante posibles situaciones de riesgo
+  * **Si** los familiares, cuidadores y proveedores de atencion
+  * **Obtienen** informacion oportuna sobre una situacion que pueda requerir su intervencion
+  * **Con** un sistema de alertas automaticas que notifique a los responsables cuando se detecte una posible situacion de riesgo.
+
+* **Declaracion de Hipotesis 3:**
+
+  * **Creemos que lograremos** mejorar el seguimiento del estado del adulto mayor y facilitar la disponibilidad de informacion para la toma de decisiones
+  * **Si** los familiares, cuidadores y proveedores de atencion
+  * **Obtienen** acceso organizado a la informacion relevante del adulto mayor desde un unico lugar
+  * **Con** una funcionalidad que centralice la informacion que actualmente se encuentra distribuida entre diferentes actores.
+
+* **Declaracion de Hipotesis 4:**
+
+  * **Creemos que lograremos** reducir el tiempo necesario para establecer contacto con un proveedor de atencion ante una situacion que requiera asistencia
+  * **Si** los familiares y cuidadores responsables del adulto mayor
+  * **Obtienen** una forma directa de comunicarse con clinicas, hospitales o profesionales disponibles
+  * **Con** un canal de comunicacion que conecte a los familiares con los proveedores de atencion integrados en la plataforma.
+
+* **Declaracion de Hipotesis 5:**
+
+  * **Creemos que lograremos** incrementar la frecuencia de uso de la plataforma por parte de familiares y cuidadores
+  * **Si** los familiares y cuidadores
+  * **Obtienen** una vision clara y rapida del estado general del adulto mayor sin necesidad de encontrarse fisicamente con el
+  * **Con** un panel de seguimiento que presente de manera accesible la informacion relevante sobre su estado.
 
 
 #### 1.2.2.4. Lean UX Canvas
