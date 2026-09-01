@@ -44,7 +44,7 @@ También se presenta cuando los familiares desean conocer el estado del adulto m
 ### Where? (¿Dónde ocurre el problema?)
 El problema se presenta principalmente en hogares y entornos donde los adultos mayores desarrollan sus actividades cotidianas, especialmente cuando permanecen solos o tienen un nivel reducido de supervisión presencial.
 
-En el contexto inicial de VitaLink, la problemática se plantea principalmente en **Lima Metropolitana** y otras ciudades del Perú, donde existe una creciente población adulta mayor y una necesidad de fortalecer los mecanismos de acompañamiento y prevención.
+En el contexto inicial de SeniorCare, la problemática se plantea principalmente en **Lima Metropolitana** y otras ciudades del Perú, donde existe una creciente población adulta mayor y una necesidad de fortalecer los mecanismos de acompañamiento y prevención.
 
 Asimismo, el problema involucra la relación entre los hogares de los adultos mayores y los establecimientos y profesionales de salud, debido a la dificultad de conectar oportunamente a ambas partes cuando se presenta una situación que requiere atención.
 
