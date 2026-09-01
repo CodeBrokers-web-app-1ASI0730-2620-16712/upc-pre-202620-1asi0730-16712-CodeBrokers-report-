@@ -41,15 +41,24 @@ A largo plazo, VitaLink podrá evolucionar mediante la integración con disposit
 \vspace{0.8cm}
 
 \noindent
+
 \begin{tabular}{p{0.72\textwidth} p{0.23\textwidth}}
-    \textbf{Integrante 1: (Escribe aca)} \newline
-    \textbf{Código de estudiante:} (Escribe aca) \newline
-    \textbf{Carrera:} (Escribe aca) \newline
-    \textbf{Descripción:} (Escribe aca) \newline
-    \textbf{Aporte al equipo:} (Escribe aca)
+
+    \textbf{Integrante 1: Yazid Said Conde} \newline
+
+    \textbf{Código de estudiante:} u202312348 \newline
+
+    \textbf{Carrera:} Ingeniería de Software \newline
+
+    \textbf{Descripción:} Soy estudiante de la carrera de Ingeniería de Software. Me considero una persona trabajadora y comprometida con mi aprendizaje. Me interesa aprender constantemente, especialmente en áreas relacionadas con la tecnología. Cuento con conocimientos en HTML, CSS, JavaScript, Python, C++ y SQL. \newline
+
+    \textbf{Aporte al equipo:} Contribuiré al desarrollo del proyecto mediante mis conocimientos en programación y tecnologías web, participando en la implementación de funcionalidades, resolución de problemas técnicos y trabajo colaborativo con los demás integrantes del equipo.
+
     & 
-    \vspace{-0.5cm} % Ajusta este valor para subir/bajar la foto
+
+    \vspace{-0.5cm}
     \includegraphics[width=\linewidth]{assets/f1.jpeg}
+
 \end{tabular}
 
 \vspace{0.8cm}
