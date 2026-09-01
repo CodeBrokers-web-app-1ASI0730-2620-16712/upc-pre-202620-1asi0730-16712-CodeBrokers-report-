@@ -63,8 +63,8 @@ A largo plazo, VitaLink podrá evolucionar mediante la integración con disposit
 \textbf{Descripción:} Estudiante de Ingeniería de Software, comprometido a ampliar sus conocimientos de programación y a aportar activamente al desarrollo del proyecto. Posee experiencia en C, C++, HTML y CSS. \newline
 \textbf{Aporte al equipo:} Aporte al desarrollo del proyecto, mediante la resolución de documentos y aplicación de lenguajes de programación, así como la organización y revisión de los entregables.
 & 
-\vspace{-0.5cm} % Ajusta este valor para subir/bajar la foto
-\includegraphics[width=\linewidth]{assets/f1.jpeg}
+\vspace{-0.5cm} 
+\includegraphics[width=\linewidth]{assets/eduardofoto.jpeg}
 \end{tabular}
 
 \vspace{0.8cm}
