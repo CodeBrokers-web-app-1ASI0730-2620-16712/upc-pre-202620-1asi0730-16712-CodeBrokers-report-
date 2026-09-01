@@ -28,29 +28,30 @@ A largo plazo, VitaLink podrá evolucionar mediante la integración con disposit
 
 \noindent
 \begin{tabular}{p{0.72\textwidth} p{0.23\textwidth}}
-    \textbf{Integrante 1: (Escribe aca)} \newline
-    \textbf{Código de estudiante:} (Escribe aca) \newline
-    \textbf{Carrera:} (Escribe aca) \newline
-    \textbf{Descripción:} (Escribe aca) \newline
-    \textbf{Aporte al equipo:} (Escribe aca)
-    & 
-    \vspace{-0.5cm} % Ajusta este valor para subir/bajar la foto
-    \includegraphics[width=\linewidth]{assets/f1.jpeg}
+\textbf{Integrante 1: Merly Salon Puerta} \newline
+\textbf{Código de estudiante:} u20201b772 \newline
+\textbf{Carrera:} Ingeniería de Software \newline
+\textbf{Descripción:} Estudiante de Ingeniería de Software, con interés en el desarrollo de soluciones tecnológicas, análisis de datos y aplicación de tecnologías emergentes para resolver problemas reales. \newline
+\textbf{Aporte al equipo:} Participación en el análisis y desarrollo de la solución, organización de actividades, elaboración de documentación y apoyo en la implementación y validación del proyecto.
+&
+\vspace{-0.5cm}
+\includegraphics[width=\linewidth]{assets/MerlySalonP.jpg}
 \end{tabular}
 
 \vspace{0.8cm}
 
 \noindent
 \begin{tabular}{p{0.72\textwidth} p{0.23\textwidth}}
-    \textbf{Integrante 1: (Escribe aca)} \newline
-    \textbf{Código de estudiante:} (Escribe aca) \newline
-    \textbf{Carrera:} (Escribe aca) \newline
-    \textbf{Descripción:} (Escribe aca) \newline
-    \textbf{Aporte al equipo:} (Escribe aca)
-    & 
-    \vspace{-0.5cm} % Ajusta este valor para subir/bajar la foto
-    \includegraphics[width=\linewidth]{assets/f1.jpeg}
+\textbf{Integrante 2: Yazid Said Conde} \newline
+\textbf{Código de estudiante:} u202312348 \newline
+\textbf{Carrera:} Ingeniería de Software \newline
+\textbf{Descripción:} Estudiante de Ingeniería de Software, trabajador y comprometido con su aprendizaje. Tiene interés en aprender constantemente, especialmente en áreas relacionadas con la tecnología, y cuenta con conocimientos en HTML, CSS, JavaScript, Python, C++ y SQL. \newline
+\textbf{Aporte al equipo:} Contribución al desarrollo del proyecto mediante sus conocimientos en programación y tecnologías web, participando en la implementación de funcionalidades, resolución de problemas técnicos y trabajo colaborativo.
+&
+\vspace{-0.5cm}
+\includegraphics[width=\linewidth]{assets/f1.jpeg}
 \end{tabular}
+
 
 \vspace{0.8cm}
 
