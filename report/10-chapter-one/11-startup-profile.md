@@ -4,25 +4,25 @@
 
 ### 1.1.1 Descripción de la Startup
 
-Como startup, tenemos el compromiso de contribuir al cuidado y bienestar de los adultos mayores. Por ello, desarrollamos VitaLink, una plataforma digital orientada al monitoreo preventivo y acompañamiento de adultos mayores, cuyo objetivo es conectar, dentro de un mismo ecosistema, a los adultos mayores, sus familiares y diferentes proveedores de servicios de salud.
+Como startup, tenemos el compromiso de contribuir al cuidado y bienestar de los adultos mayores. Por ello, desarrollamos SeniorCare, una plataforma digital orientada al monitoreo preventivo y acompañamiento de adultos mayores, cuyo objetivo es conectar, dentro de un mismo ecosistema, a los adultos mayores, sus familiares y diferentes proveedores de servicios de salud.
 
-VitaLink permite centralizar información relacionada con el estado del adulto mayor y generar alertas cuando se identifican valores o combinaciones de datos que podrían representar una situación de riesgo. Estas alertas pueden ser comunicadas a los familiares autorizados y, dependiendo de la situación, a una institución de salud registrada en la plataforma.
+SeniorCare permite centralizar información relacionada con el estado del adulto mayor y generar alertas cuando se identifican valores o combinaciones de datos que podrían representar una situación de riesgo. Estas alertas pueden ser comunicadas a los familiares autorizados y, dependiendo de la situación, a una institución de salud registrada en la plataforma.
 
 De esta manera, CodeBrokers busca desarrollar tecnología que no solo permita monitorear información, sino que también facilite una respuesta oportuna y coordinada ante posibles situaciones de riesgo, contribuyendo a mejorar el acompañamiento y la seguridad de los adultos mayores.
 
 **Misión**
 
-Nuestra misión es mejorar la calidad de vida y la seguridad de los adultos mayores mediante VitaLink, proporcionando herramientas digitales de monitoreo preventivo que permitan detectar oportunamente posibles situaciones de riesgo, facilitar la comunicación con sus familiares y conectar de manera eficiente con proveedores de servicios de salud.
+Nuestra misión es mejorar la calidad de vida y la seguridad de los adultos mayores mediante SeniorCare, proporcionando herramientas digitales de monitoreo preventivo que permitan detectar oportunamente posibles situaciones de riesgo, facilitar la comunicación con sus familiares y conectar de manera eficiente con proveedores de servicios de salud.
 
 Buscamos utilizar la tecnología como una herramienta de prevención y acompañamiento, facilitando que las personas responsables del cuidado puedan contar con información oportuna para tomar decisiones y actuar ante posibles situaciones de riesgo.
 
 **Visión**
 
-Nuestra visión es convertir a VitaLink, en una startup referente en Latinoamérica en el desarrollo de soluciones digitales para el monitoreo preventivo y acompañamiento de adultos mayores.
+Nuestra visión es convertir a SeniorCare, en una startup referente en Latinoamérica en el desarrollo de soluciones digitales para el monitoreo preventivo y acompañamiento de adultos mayores.
 
 Buscamos construir un ecosistema en el que adultos mayores, familiares, clínicas, hospitales y profesionales de la salud puedan mantenerse conectados, favoreciendo una atención más preventiva, rápida, accesible y centrada en la persona.
 
-A largo plazo, VitaLink podrá evolucionar mediante la integración con dispositivos inteligentes y otras tecnologías aplicadas al cuidado de la salud, permitiendo obtener información de manera más continua y automatizada. De esta forma, aspiramos a contribuir a la transición de un modelo de cuidado principalmente reactivo hacia uno preventivo, conectado y basado en información, donde la tecnología permita anticiparse a posibles situaciones de riesgo y facilitar una atención oportuna.
+A largo plazo, SeniorCare podrá evolucionar mediante la integración con dispositivos inteligentes y otras tecnologías aplicadas al cuidado de la salud, permitiendo obtener información de manera más continua y automatizada. De esta forma, aspiramos a contribuir a la transición de un modelo de cuidado principalmente reactivo hacia uno preventivo, conectado y basado en información, donde la tecnología permita anticiparse a posibles situaciones de riesgo y facilitar una atención oportuna.
 
 ### 1.1.2 Perfiles de integrantes del equipo
 
