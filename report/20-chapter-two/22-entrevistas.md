@@ -41,3 +41,54 @@
 
 ### 2.2.3. Análisis de entrevistas
 
+### Segmento Objetivo: Clinicas y hospitales
+
+### 1. Rol Principal
+* **100% da seguimiento y atención a pacientes adultos mayores**, ya sea en clínica, centro de salud comunitario o consulta independiente.
+
+---
+
+### 2. Contexto
+* **Entornos de atención:** Médicos con distintos entornos (clínica privada, centro de salud público, atención a domicilio), todos **sin sistema digital de seguimiento remoto**.
+* **Herramientas actuales:**
+  * **100%** usa métodos manuales o informales (papel, cuaderno, memoria, WhatsApp/llamadas).
+  * **33%** usa un sistema institucional, pero lo considera lento e insuficiente para seguimiento continuo.
+  * **100%** depende de comunicación informal por WhatsApp o llamada telefónica con la familia del paciente para enterarse de novedades.
+
+---
+
+### 3. Problemas Comunes
+* **100%:** No se entera a tiempo de situaciones que requieren atención; depende de que un tercero le avise.
+* **100%:** Dificultad para acceder al historial del paciente de forma centralizada y ordenada.
+* **100%:** No sabe con certeza si una situación ya fue atendida o sigue pendiente.
+* **100%:** Se pierde información relevante (observaciones verbales, notas informales) que nunca queda registrada formalmente.
+* **33%:** Alta carga de pacientes le impide dar seguimiento incluso a casos leves.
+
+---
+
+### 4. Frecuencia de Seguimiento
+* **33%** depende de llamadas periódicas sin constancia fija.
+* **33%** solo reactivo (ante emergencia).
+* **33%** depende completamente de terceros informales, sin ningún orden.
+
+---
+
+### 5. Datos Deseados Automáticamente
+* **100%** quiere ver: qué ocurrió, cuándo, y nivel de urgencia, de forma inmediata y sin tener que buscar en otro lado.
+* **100%** quiere una vista resumen que priorice los casos más urgentes antes de entrar al detalle.
+
+---
+
+### 6. Transparencia y Confianza
+* **100%** requiere que quede claro quién accede a la información del paciente.
+* **66%** señala explícitamente la necesidad de que la fuente de datos sea confiable y no dependa de terceros no autorizados.
+
+---
+
+### 7. Registro de Acciones
+* **100%** quiere confirmar la atención de un caso de forma mínima (campo corto / un clic), sin formularios largos.
+
+---
+
+### 8. Adopción de la Aplicación
+* **100%** dispuesto a adoptarla si es simple y no representa una curva de aprendizaje alta, dada su carga de trabajo actual.
