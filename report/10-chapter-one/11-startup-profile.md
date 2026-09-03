@@ -58,13 +58,13 @@ A largo plazo, SeniorCare podrá evolucionar mediante la integración con dispos
 \noindent
 \begin{tabular}{p{0.72\textwidth} p{0.23\textwidth}}
 \textbf{Integrante 1: Eduardo Osorio Ramírez} \newline
-\textbf{Código de estudiante:} u202421631 \newline
+\textbf{Código de estudiante:} U202421631 \newline
 \textbf{Carrera:} Ingeniería de Software \newline
 \textbf{Descripción:} Estudiante de Ingeniería de Software, comprometido a ampliar sus conocimientos de programación y a aportar activamente al desarrollo del proyecto. Posee experiencia en C, C++, HTML y CSS. \newline
 \textbf{Aporte al equipo:} Aporte al desarrollo del proyecto, mediante la resolución de documentos y aplicación de lenguajes de programación, así como la organización y revisión de los entregables.
 & 
 \vspace{-0.5cm} 
-\includegraphics[width=\linewidth]{assets/eduardofoto.jpeg}
+\includegraphics[width=\linewidth]{assets/eduardofoto.jpg}
 \end{tabular}
 
 \vspace{0.8cm}
@@ -72,7 +72,7 @@ A largo plazo, SeniorCare podrá evolucionar mediante la integración con dispos
 \noindent
 \begin{tabular}{p{0.72\textwidth} p{0.23\textwidth}}
 \textbf{Integrante 4: Leonel German Rodriguez Gonzales} \newline
-\textbf{Código de estudiante:} u202316466 \newline
+\textbf{Código de estudiante:} U202316466 \newline
 \textbf{Carrera:} Ingeniería de Software \newline
 \textbf{Descripción:} Estudiante de Ingeniería de Software, interesado en seguir desarrollando sus conocimientos en programación, análisis de datos y desarrollo de soluciones tecnológicas. Cuenta con conocimientos en Python, SQL, C++, Power BI y está en constante aprendizaje de nuevas herramientas y tecnologías. \newline
 \textbf{Aporte al equipo:} Contribución al desarrollo del proyecto mediante la elaboración y organización de documentación, participación en el análisis de la solución y apoyo al equipo aplicando sus conocimientos en programación y manejo de datos.
@@ -85,14 +85,14 @@ A largo plazo, SeniorCare podrá evolucionar mediante la integración con dispos
 
 \noindent
 \begin{tabular}{p{0.72\textwidth} p{0.23\textwidth}}
-\textbf{Integrante 1: (Escribe aca)} \newline
-\textbf{Código de estudiante:} (Escribe aca) \newline
-\textbf{Carrera:} (Escribe aca) \newline
-\textbf{Descripción:} (Escribe aca) \newline
-\textbf{Aporte al equipo:} (Escribe aca)
+\textbf{Integrante 1: Luis German Tello Quispe} \newline
+\textbf{Código de estudiante:} U202317767 \newline
+\textbf{Carrera:} Ingeniería de Software \newline
+\textbf{Descripción:} Soy un estudiante de la carrera de ing de software, me interesa mucho el lado del backend, tecnologias como phyton, mysql, mongodb, c++ y tambien me entusiasma en un futuro poder aprender mucho sobre ciberseguridad de la mano del backend. \newline
+\textbf{Aporte al equipo:} Apoyo a mi equipo con estructuracion de los documentos para el desarrollo del proyecto. Ademas, apoyo mediante analisis de correcciones a lo largo del avance, en base a mis conocimientos tanto de programacion como analisis de requerimientos y requisitos.
 & 
 \vspace{-0.5cm} % Ajusta este valor para subir/bajar la foto
-\includegraphics[width=\linewidth]{assets/f1.jpeg}
+\includegraphics[width=\linewidth]{assets/foto-luis-tello.jpg}
 \end{tabular}
 
 
