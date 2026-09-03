@@ -235,7 +235,13 @@ La implementación de estos SEO Tags y Meta Tags permitirá mantener una identif
 
 ### 4.2.4. Searching Systems
 
+En el Landing Page no se implementa un sistema de búsqueda, dado que el volumen de contenido es reducido y la navegación secuencial es suficiente para que el visitante encuentre la información que necesita.
 
 
 ### 4.2.5. Navigation Systems
 
+El sistema de navegación de **VitaLink** está diseñado para facilitar el acceso a las funcionalidades e información más importantes de la plataforma, considerando las necesidades tanto de familiares y pacientes como de profesionales de la salud.
+
+En el **Landing Page**, la navegación es lineal con un **navbar fijo** en la parte superior que contiene anclas a las secciones principales de la página, enfocadas en explicar cómo funciona el monitoreo, el sistema de alertas, la seguridad de los datos y las preguntas frecuentes. En mobile, el navbar colapsa en un menú hamburguesa.
+
+El selector de perfil permite cambiar entre **Familiares/Pacientes** y **Profesionales de salud**, adaptando el contenido y las acciones principales según el tipo de usuario, pero manteniendo una estructura de navegación unificada. Los **call to action** del Landing Page redirigen al usuario hacia la acción correspondiente: el CTA para familiares o pacientes permite comenzar el proceso de uso de VitaLink, mientras que el CTA para profesionales de salud permite iniciar el proceso para unirse como proveedor.
