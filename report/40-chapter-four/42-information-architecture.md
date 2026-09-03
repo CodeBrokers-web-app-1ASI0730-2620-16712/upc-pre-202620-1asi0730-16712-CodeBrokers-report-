@@ -50,6 +50,82 @@ La combinación de estos sistemas de organización permite que la landing page p
 
 ### 4.2.2. Labeling Systems
 
+El sistema de etiquetado de VitaLink está diseñado para comunicar la propuesta de valor de la landing page de manera clara, directa y fácil de comprender. Las etiquetas utilizan un número reducido de palabras y términos relacionados con el ámbito de la salud y el monitoreo preventivo, buscando facilitar el escaneo visual y reducir la carga cognitiva de los visitantes.
+
+### Principios de Etiquetado
+* **Concisión:** Se utilizan etiquetas breves y directas, generalmente de una a cuatro palabras, como “Red Médica”, “Seguridad de Datos” o “Flujo clínico integrado”.
+* **Consistencia:** Se mantiene el mismo término para representar un concepto en las diferentes secciones de la landing, evitando utilizar palabras diferentes para una misma idea.
+* **Familiaridad:** Se emplean términos reconocibles para los usuarios del ámbito de la salud, como “Pacientes”, “Profesionales de salud”, “Alertas” y “Seguridad”.
+* **Claridad:** Las etiquetas buscan expresar directamente el contenido o la acción asociada, evitando términos técnicos innecesarios para los visitantes de la landing page.
+
+### Categorías de Etiquetas
+
+#### Etiquetas de Navegación
+El menú principal utiliza etiquetas breves que permiten identificar rápidamente las diferentes áreas de información de la landing page:
+* “Ventajas Clínicas”
+* “Seguridad de Datos”
+* “Red Médica”
+
+Estas etiquetas permiten al visitante reconocer el contenido de cada sección antes de acceder a ella.
+
+### Etiquetas para Identificación de Audiencia
+La landing incorpora etiquetas para diferenciar los tipos de usuarios a los que está dirigida la propuesta:
+* “Profesionales de salud”
+* “Pacientes”
+* “Para Profesionales de la Salud”
+
+Estas etiquetas permiten orientar rápidamente al visitante hacia la perspectiva que corresponde a su perfil.
+
+### Etiquetas para Secciones Informativas
+Las principales secciones utilizan nombres descriptivos que resumen su contenido:
+* “Flujo clínico integrado”
+* “Protocolo de Alerta Inteligente”
+* “Seguridad de grado médico”
+* “Cumplimiento normativo total”
+
+Estas etiquetas funcionan como encabezados y permiten identificar rápidamente el propósito de cada bloque de información.
+
+### Etiquetas para Características y Beneficios
+En las secciones de contenido se utilizan etiquetas concretas para destacar las principales características comunicadas por VitaLink:
+* “Captura Continua”
+* “Análisis Algorítmico”
+* “Alertas Integradas”
+* “Cero Falsos Positivos”
+* “Escalamiento Multicanal”
+* “Contexto Histórico”
+* “Cifrado E2E”
+* “HIPAA & GDPR”
+* “Control de Acceso (RBAC)”
+
+Estas etiquetas permiten identificar rápidamente cada beneficio o característica sin necesidad de leer inicialmente las descripciones completas.
+
+### Etiquetas de Acción (Call-to-Action)
+Las acciones principales utilizan etiquetas orientadas directamente a la intención del usuario:
+* “Unirme como proveedor”
+* “Solicitar información técnica”
+* “Crear cuenta institucional”
+
+Estas etiquetas indican de manera explícita qué acción puede realizar el visitante y funcionan como puntos de conversión dentro de la landing page.
+
+### Etiquetas para Información Institucional
+En el footer se utilizan etiquetas simples para agrupar información complementaria:
+* “Legal”
+* “Contacto”
+* “Síguenos”
+* “Privacidad”
+* “Términos de Servicio”
+
+Esta organización permite localizar rápidamente información secundaria sin competir visualmente con las llamadas a la acción principales.
+
+### Asociaciones entre Etiquetas
+Las etiquetas se relacionan mediante diferentes recursos visuales y estructurales:
+* **Jerarquía tipográfica:** Los títulos de sección presentan mayor tamaño y peso que las etiquetas secundarias.
+* **Agrupación visual:** Las etiquetas relacionadas se colocan dentro de una misma sección o tarjeta para facilitar su asociación.
+* **Iconografía complementaria:** Los iconos ayudan a reforzar visualmente el significado de etiquetas como “Cifrado E2E”, “Control de Acceso”, “Alertas Integradas” y otras características.
+* **Color:** Se utiliza principalmente el color verde de VitaLink para destacar acciones y conceptos importantes, mientras que otros colores se emplean para diferenciar información secundaria o estados de alerta.
+* **Posición y espaciado:** Las etiquetas se organizan mediante espacios y agrupaciones consistentes para establecer relaciones entre títulos, descripciones, iconos y botones.
+
+Este sistema de etiquetado permite que los visitantes de la landing page comprendan rápidamente la propuesta de VitaLink, identifiquen las principales características del servicio y reconozcan las acciones disponibles, manteniendo una comunicación visual consistente entre las diferentes vistas de la landing page.
 
 
 ### 4.2.3. SEO Tags and Meta Tags
