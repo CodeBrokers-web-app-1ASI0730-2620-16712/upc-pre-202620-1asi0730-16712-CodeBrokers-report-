@@ -75,7 +75,9 @@
 
 **Resumen:** Jimena Villanueva Romero, de 22 años, se desempeña como médica tratante en un centro de salud, donde fue contratada para brindar atención médica y control de evolución a sus pacientes. Actualmente utiliza el sistema de la institución y papeles dispersos para organizar información, comunicarse con los casos y llevar el registro de sus atenciones. La supervisión del estado de salud de los pacientes se realiza únicamente cuando acuden a consulta presencial, lo que impide contar con seguimiento remoto o información en tiempo real. Esto genera una gestión reactiva, especialmente fuera de las citas, cuando suelen presentarse complicaciones, obligándola a enterarse tarde de las incidencias en la siguiente cita o ante una emergencia grave. Esta situación ha ocasionado episodios de falta de seguimiento en casos leves y pérdida de control sobre el estado actual de los pacientes, además de dificultar la toma de decisiones al no tener una forma ágil de estar pendiente de todos. Para revisar antecedentes, realiza una búsqueda manual en distintos sistemas o papeles, aunque reconoce que el proceso es tedioso y poco eficiente. Jimena considera que una solución que permita visualizar visualmente la urgencia de los casos pendientes con un solo clic le ayudaría a ahorrar tiempo y mejorar la gestión, priorizando que la herramienta sea simple y rápida dada su alta carga laboral.
 
-#### Entrevista 3
+#### Segmento Objetivo: Familiares y Adultos Mayores
+
+#### Entrevista 1
 
 \includegraphics[width=0.7\linewidth]{assets/entrevista 3.png}
 
