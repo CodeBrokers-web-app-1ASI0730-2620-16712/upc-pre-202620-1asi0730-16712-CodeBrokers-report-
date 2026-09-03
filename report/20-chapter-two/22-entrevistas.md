@@ -37,6 +37,61 @@
 
 ### 2.2.2. Registro de entrevistas
 
+#### Segmento Objetivo: Clinicas y hospitales
+
+#### Entrevista 1
+
+\includegraphics[width=0.7\linewidth]{assets/entrevista 1.png}
+
+**Nombres y apellidos:** Dafne Cabrera Sanchez
+
+**Edad:** 23 años
+
+**Distrito:** San Miguel 
+
+**Inicio:** 00:00
+
+**Duracion:** 4:07
+
+**URL:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312348_upc_edu_pe/IQA0xm_R49h-S7n7giEPP82lASrhM583AT2tZREqNETnfvg?e=oIAk67&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
+**Resumen:** Dafne Cabrera Sánchez, de 23 años, se desempeña como cuidadora y asistente de salud, donde fue contratada para brindar atención y seguimiento continuo a sus pacientes. Actualmente utiliza notas rápidas, carpetas físicas y llamadas telefónicas para organizar información, comunicarse con la familia y llevar el control de los casos, incluyendo observaciones verbales y pendientes. La supervisión del estado del paciente se realiza mediante llamadas esporádicas o revisiones presenciales cada cierto tiempo, lo que impide contar con información en tiempo real. Esto genera una gestión reactiva, especialmente cuando ocurren imprevistos entre consultas, obligándola a depender de que alguien la llame para enterarse tarde de las incidencias. Esta situación ha ocasionado episodios de falta de coordinación, duplicidad en las llamadas de atención y pérdida de información importante, además de dificultar la toma de decisiones al no tener los datos centralizados. Para revisar historiales o antecedentes, realiza una búsqueda manual en papeles, aunque reconoce que el proceso podría ser mucho más eficiente. Dafne considera que una solución que permita visualizar de inmediato las alertas urgentes, centralizar el historial y enviar notificaciones automáticas le ayudaría a ahorrar tiempo y mejorar la gestión, priorizando que la plataforma sea rápida, segura y transparente sobre quién accede a los datos.
+
+#### Entrevista 2
+
+\includegraphics[width=0.7\linewidth]{assets/entrevista 2.png}
+
+**Nombres y apellidos:** Jimena Villanueva Romero
+
+**Edad:** 22 años
+
+**Distrito:** Jesus Maria 
+
+**Inicio:** 00:00
+
+**Duracion:** 5:03
+
+**URL:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312348_upc_edu_pe/IQDFXnVTDQW-Sp-D3G4LMmepAdvmKT8u_c9MesKZdyM6g80?e=uF1EFZ&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
+**Resumen:** Jimena Villanueva Romero, de 22 años, se desempeña como médica tratante en un centro de salud, donde fue contratada para brindar atención médica y control de evolución a sus pacientes. Actualmente utiliza el sistema de la institución y papeles dispersos para organizar información, comunicarse con los casos y llevar el registro de sus atenciones. La supervisión del estado de salud de los pacientes se realiza únicamente cuando acuden a consulta presencial, lo que impide contar con seguimiento remoto o información en tiempo real. Esto genera una gestión reactiva, especialmente fuera de las citas, cuando suelen presentarse complicaciones, obligándola a enterarse tarde de las incidencias en la siguiente cita o ante una emergencia grave. Esta situación ha ocasionado episodios de falta de seguimiento en casos leves y pérdida de control sobre el estado actual de los pacientes, además de dificultar la toma de decisiones al no tener una forma ágil de estar pendiente de todos. Para revisar antecedentes, realiza una búsqueda manual en distintos sistemas o papeles, aunque reconoce que el proceso es tedioso y poco eficiente. Jimena considera que una solución que permita visualizar visualmente la urgencia de los casos pendientes con un solo clic le ayudaría a ahorrar tiempo y mejorar la gestión, priorizando que la herramienta sea simple y rápida dada su alta carga laboral.
+
+#### Entrevista 3
+
+\includegraphics[width=0.7\linewidth]{assets/entrevista 3.png}
+
+**Nombres y apellidos:** Samir Choquehuanca Miranda
+
+**Edad:** 22 años
+
+**Distrito:** Lince 
+
+**Inicio:** 00:00
+
+**Duracion:** 5:08
+
+**URL:** https://upcedupe-my.sharepoint.com/:v:/g/personal/u202312348_upc_edu_pe/IQBilX5veLGqTqC8ge0Z80C6AZOQAVVrLkBm6hlFPV9koI4?e=yxCXuz&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D
+
+**Resumen:** Samir Choquehuanca Miranda, de 22 años, se desempeña como familiar cuidador y soporte principal, donde asumió la responsabilidad de velar por el bienestar y la seguridad de su madre. Actualmente utiliza llamadas telefónicas y la coordinación informal con sus hermanos para organizar la atención, comunicarse con la familia y llevar el control diario de su cuidado, incluyendo recordatorios de medicamentos y avisos de vecinos. La supervisión del estado de su madre se realiza mediante llamadas esporádicas dos o tres veces al día, lo que impide contar con información constante o en tiempo real mientras él se encuentra ocupado en su trabajo. Esto genera una gestión reactiva y generadora de culpa, enterándose muchas veces a través de terceros o de su propia madre cuando ya pasó el problema. Esta situación ha ocasionado episodios de duplicidad en las llamadas, incertidumbre sobre quién ya la contactó y dificultades para actuar rápido ante imprevistos, además de la fatiga que implica coordinar todo manualmente. Para conocer su estado, depende de la comunicación directa o de reportes tardíos, reconociendo que el proceso es agotador y poco eficiente. Samir considera que una solución que permita ver de inmediato si todo está en orden, recibir alertas claras sobre su condición y registrar la atención con un solo botón le ayudaría a ahorrar tiempo y reducir la preocupación, priorizando que la plataforma garantice la privacidad y protección de los datos de su madre.
 
 
 ### 2.2.3. Análisis de entrevistas
