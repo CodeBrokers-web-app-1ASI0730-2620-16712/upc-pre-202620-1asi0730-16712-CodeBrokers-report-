@@ -130,6 +130,107 @@ Este sistema de etiquetado permite que los visitantes de la landing page compren
 
 ### 4.2.3. SEO Tags and Meta Tags
 
+### SEO Tags y Meta Tags
+
+VitaLink implementará una estrategia de SEO y etiquetado web orientada a mejorar la visibilidad del producto en motores de búsqueda y facilitar una correcta identificación de sus contenidos. Los valores de las etiquetas se definirán de acuerdo con el propósito de cada experiencia: **Landing Page (sitio web estático)** y **Web Application**.
+
+### Landing Page (Sitio Web Estático)
+
+La Landing Page tendrá como objetivo presentar VitaLink, comunicar su propuesta de valor y captar principalmente a profesionales e instituciones del sector salud. Por ello, las etiquetas estarán orientadas a conceptos como monitoreo preventivo, seguimiento de pacientes, alertas de salud y tecnología aplicada al ámbito clínico.
+
+### Tags principales
+
+```html
+<title>VitaLink | Monitoreo Preventivo para Profesionales de la Salud</title>
+
+<meta name="description" content="VitaLink facilita el monitoreo preventivo de pacientes mediante datos continuos, alertas inteligentes y herramientas integradas para profesionales de la salud.">
+
+<meta name="keywords" content="VitaLink, monitoreo preventivo, monitoreo de pacientes, seguimiento de pacientes, alertas de salud, profesionales de la salud, tecnología médica">
+
+<meta name="author" content="CodeBrokers">
+```
+
+El `<title>` permitirá identificar claramente el producto y su orientación hacia los profesionales de la salud. La descripción resumirá la propuesta de valor de VitaLink para mejorar su representación en los resultados de búsqueda. Las palabras clave estarán relacionadas directamente con los conceptos utilizados en la Landing Page, evitando incorporar términos que no representen el propósito del producto.
+
+### Tags de viewport y responsividad
+
+```html
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+```
+
+Estas etiquetas permitirán que la Landing Page se adapte correctamente a diferentes tamaños de pantalla y dispositivos, manteniendo la experiencia responsiva definida para VitaLink.
+
+### Open Graph y Social Media Tags
+
+Para mejorar la presentación de VitaLink cuando la Landing Page sea compartida en redes sociales o plataformas de mensajería, se considerará la implementación de etiquetas Open Graph:
+
+```html
+<meta property="og:title" content="VitaLink | Monitoreo Preventivo para Profesionales de la Salud">
+
+<meta property="og:description" content="Monitoreo preventivo, alertas inteligentes y datos continuos para facilitar el seguimiento de pacientes.">
+
+<meta property="og:image" content="[URL de la imagen oficial de VitaLink]">
+
+<meta property="og:url" content="[URL oficial de VitaLink]">
+
+<meta property="og:type" content="website">
+
+<meta name="twitter:card" content="summary_large_image">
+```
+
+La imagen utilizada deberá corresponder a un recurso gráfico oficial de VitaLink, manteniendo la identidad visual de la marca.
+
+### Optimización de la Estructura de la Landing Page
+
+La Landing Page contará con una estructura semántica que facilite tanto la navegación de los usuarios como la interpretación del contenido por parte de los motores de búsqueda.
+
+Se considerará:
+
+- **Jerarquía de encabezados:** utilización de un único `h1` para la propuesta de valor principal y encabezados `h2` y `h3` para organizar las diferentes secciones y contenidos.
+
+- **Identificación semántica de secciones:** cada sección podrá contar con identificadores que faciliten la navegación mediante enlaces internos, por ejemplo `#ventajas-clinicas`, `#seguridad-datos`, `#red-medica` y `#faq`, en concordancia con las secciones de navegación planteadas en la Landing Page.
+
+- **Atributos `alt` descriptivos:** las imágenes deberán contar con textos alternativos relacionados con su contenido. Por ejemplo, para la imagen del dashboard clínico se podrá utilizar:
+
+```html
+<img alt="Dashboard clínico de VitaLink para monitoreo de pacientes">
+```
+
+- **Contenido relevante:** se utilizarán de manera natural términos relacionados con el monitoreo preventivo, alertas inteligentes, pacientes y profesionales de la salud, evitando la repetición excesiva de palabras clave.
+
+- **Datos estructurados:** a futuro se podrá incorporar Schema.org para representar información relevante de VitaLink como producto, organización o servicio, siempre que corresponda con la información definitiva publicada.
+
+---
+
+### Web Application
+
+La Web Application tendrá un objetivo diferente a la Landing Page, ya que estará orientada a usuarios autenticados y a la gestión y visualización de información dentro de la plataforma. Por este motivo, sus etiquetas estarán enfocadas en identificar claramente la aplicación y sus diferentes vistas.
+
+### Tags principales
+
+```html
+<title>VitaLink | Plataforma de Monitoreo de Salud</title>
+
+<meta name="description" content="Plataforma VitaLink para el seguimiento preventivo de pacientes, visualización de información de salud y gestión de alertas.">
+
+<meta name="keywords" content="VitaLink, plataforma de salud, monitoreo de pacientes, seguimiento de salud, alertas médicas">
+
+<meta name="author" content="CodeBrokers">
+```
+
+En la Web Application, el contenido SEO tendrá una función principalmente descriptiva y de identificación, debido a que gran parte de la información estará disponible únicamente para usuarios con acceso a la plataforma.
+
+Para las diferentes vistas de la aplicación se podrán utilizar títulos específicos manteniendo la identidad de VitaLink, por ejemplo:
+
+```html
+<title>Dashboard | VitaLink</title>
+<title>Pacientes | VitaLink</title>
+<title>Alertas | VitaLink</title>
+<title>Perfil | VitaLink</title>
+```
+
+La implementación de estos SEO Tags y Meta Tags permitirá mantener una identificación consistente de VitaLink tanto en su **Landing Page como en su Web Application**, diferenciando el propósito de cada experiencia. La Landing Page estará enfocada principalmente en la presentación del producto, posicionamiento y captación de usuarios, mientras que la Web Application estará orientada al acceso y uso de las funcionalidades de la plataforma.
 
 
 ### 4.2.4. Searching Systems
