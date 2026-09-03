@@ -72,7 +72,7 @@ A largo plazo, SeniorCare podrá evolucionar mediante la integración con dispos
 \noindent
 \begin{tabular}{p{0.72\textwidth} p{0.23\textwidth}}
 \textbf{Integrante 4: Leonel German Rodriguez Gonzales} \newline
-\textbf{Código de estudiante:} u20236466 \newline
+\textbf{Código de estudiante:} u202316466 \newline
 \textbf{Carrera:} Ingeniería de Software \newline
 \textbf{Descripción:} Estudiante de Ingeniería de Software, interesado en seguir desarrollando sus conocimientos en programación, análisis de datos y desarrollo de soluciones tecnológicas. Cuenta con conocimientos en Python, SQL, C++, Power BI y está en constante aprendizaje de nuevas herramientas y tecnologías. \newline
 \textbf{Aporte al equipo:} Contribución al desarrollo del proyecto mediante la elaboración y organización de documentación, participación en el análisis de la solución y apoyo al equipo aplicando sus conocimientos en programación y manejo de datos.
