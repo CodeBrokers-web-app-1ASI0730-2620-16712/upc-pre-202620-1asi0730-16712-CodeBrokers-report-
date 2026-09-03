@@ -78,7 +78,7 @@ A largo plazo, SeniorCare podrá evolucionar mediante la integración con dispos
 \textbf{Aporte al equipo:} Contribución al desarrollo del proyecto mediante la elaboración y organización de documentación, participación en el análisis de la solución y apoyo al equipo aplicando sus conocimientos en programación y manejo de datos.
 &
 \vspace{-0.5cm}
-\includegraphics[width=\linewidth]{assets/leonel.jpg}
+\includegraphics[width=\linewidth]{assets/leonel.jpeg}
 \end{tabular}
 
 \vspace{0.8cm}
