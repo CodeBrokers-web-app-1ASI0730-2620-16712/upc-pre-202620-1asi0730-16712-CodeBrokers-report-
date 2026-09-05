@@ -6,7 +6,7 @@
 
 El envejecimiento de la población representa un desafío cada vez más importante para los sistemas de salud y las familias. La Organización Mundial de la Salud señala que la población mundial de 60 años o más está aumentando rápidamente y estima que para 2030 una de cada seis personas en el mundo tendrá 60 años o más. Este proceso genera nuevos desafíos para los sistemas de salud y asistencia social, especialmente en la atención y cuidado de las personas mayores (Organización Mundial de la Salud [OMS], 2025).
 
-Frente a esta realidad surge **SeniorCare**,  orientada al monitoreo preventivo y acompañamiento de adultos mayores. La plataforma busca centralizar información relevante, identificar posibles situaciones de riesgo y facilitar la comunicación entre el adulto mayor, sus familiares y proveedores de atención.
+Frente a esta realidad surge **VitaLink**,  orientada al monitoreo preventivo y acompañamiento de adultos mayores. La plataforma busca centralizar información relevante, identificar posibles situaciones de riesgo y facilitar la comunicación entre el adulto mayor, sus familiares y proveedores de atención.
 
 ---
 
@@ -44,7 +44,7 @@ También se presenta cuando los familiares desean conocer el estado del adulto m
 ### Where? (¿Dónde ocurre el problema?)
 El problema se presenta principalmente en hogares y entornos donde los adultos mayores desarrollan sus actividades cotidianas, especialmente cuando permanecen solos o tienen un nivel reducido de supervisión presencial.
 
-En el contexto inicial de SeniorCare, la problemática se plantea principalmente en **Lima Metropolitana** y otras ciudades del Perú, donde existe una creciente población adulta mayor y una necesidad de fortalecer los mecanismos de acompañamiento y prevención.
+En el contexto inicial de VitaLink, la problemática se plantea principalmente en **Lima Metropolitana** y otras ciudades del Perú, donde existe una creciente población adulta mayor y una necesidad de fortalecer los mecanismos de acompañamiento y prevención.
 
 Asimismo, el problema involucra la relación entre los hogares de los adultos mayores y los establecimientos y profesionales de salud, debido a la dificultad de conectar oportunamente a ambas partes cuando se presenta una situación que requiere atención.
 
@@ -91,7 +91,7 @@ La tranquilidad y capacidad de respuesta de los familiares y cuidadores se ven l
 
 
 #### 1.2.2.2. Lean UX Assumptions
-Los siguientes supuestos establecen las creencias iniciales del equipo sobre los factores que influenciarán en el exito de SeniorCare.
+Los siguientes supuestos establecen las creencias iniciales del equipo sobre los factores que influenciarán en el exito de VitaLink.
 
 Business Outcomes (Resultados de Negocio)
 Reducir el tiempo de respuesta ante situaciones de riesgo detectadas al contar con un sistema de alertas que sustituya la dependencia de la supervision presencial constante.
@@ -104,7 +104,7 @@ Familiares y cuidadores podran acceder a informacion oportuna sobre el estado de
 Clinicas y hospitales podran recibir alertas y datos relevantes de manera oportuna facilitando una gestion de atencion mas agil y mejor informada.
 
 Features (Caracteristicas de la solucion)
-Las propuestas de SeniorCare se sustentan en las siguientes funciones:
+Las propuestas de VitaLink se sustentan en las siguientes funciones:
 Monitoreo preventivo: Seguimiento de indicadores relevantes del adulto mayor para identificar posibles situaciones de riesgo de manera temprana.
 Sistema de alertas: Notificaciones automaticas a familiares y/o proveedores de salud ante la deteccion de una situacion que requiera atencion.
 Centralizacion de informacion: Un espacio unico donde se consolide la informacion de salud del adulto mayor, actualmente dispersa entre distintos actores.
