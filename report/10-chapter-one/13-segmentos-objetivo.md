@@ -4,7 +4,7 @@
 
 Este segmento está conformado por adultos mayores de 60 años y sus familiares, especialmente aquellos que desean mantener un sistema de acompañamiento y monitoreo preventivo para mejorar la seguridad del adulto mayor.
 
-A diferencia del primer segmento, este grupo puede estar compuesto por familias en las que el propio adulto mayor participa activamente en la decisión de utilizar SeniorCare, por ejemplo, porque vive solo, pasa gran parte del día sin compañía o desea que sus familiares puedan conocer su estado sin necesidad de realizar llamadas constantes.
+A diferencia del primer segmento, este grupo puede estar compuesto por familias en las que el propio adulto mayor participa activamente en la decisión de utilizar VitaLink, por ejemplo, porque vive solo, pasa gran parte del día sin compañía o desea que sus familiares puedan conocer su estado sin necesidad de realizar llamadas constantes.
 
 #### Características principales:
 
@@ -19,7 +19,7 @@ A diferencia del primer segmento, este grupo puede estar compuesto por familias 
 
 ### 2. Clínicas y hospitales
 
-Este segmento representa a los proveedores de atención que forman parte del ecosistema de SeniorCare.
+Este segmento representa a los proveedores de atención que forman parte del ecosistema de VitaLink.
 
 #### Perfil:
 
@@ -31,7 +31,7 @@ Este segmento representa a los proveedores de atención que forman parte del eco
 #### Necesidad:
 Recibir solicitudes de atención de potenciales pacientes y contar con un canal digital para gestionar dichas solicitudes.
 
-#### Qué les ofrece SeniorCare:
+#### Qué les ofrece VitaLink:
 
 * **Acceso a potenciales pacientes.**
 * **Recepción de alertas o solicitudes de atención.**
