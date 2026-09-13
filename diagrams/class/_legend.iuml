@@ -1,0 +1,10 @@
+legend right
+|= Simbolo |= Significado |
+| + | public |
+| - | private |
+| # | protected |
+| ~ | package-private |
+| *-- | composicion |
+| o-- | agregacion |
+| ..> | dependencia / referencia por Id |
+endlegend

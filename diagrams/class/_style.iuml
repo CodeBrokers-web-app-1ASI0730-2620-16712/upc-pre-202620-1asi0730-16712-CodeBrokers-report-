@@ -1,0 +1,16 @@
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam classAttributeIconSize 0
+skinparam packageStyle rectangle
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam ArrowColor #333333
+skinparam class {
+  BackgroundColor #F2F2F2
+  BorderColor #333333
+  HeaderBackgroundColor #E8E8E8
+}
+skinparam package {
+  BackgroundColor #FFFFFF
+  BorderColor #555555
+}

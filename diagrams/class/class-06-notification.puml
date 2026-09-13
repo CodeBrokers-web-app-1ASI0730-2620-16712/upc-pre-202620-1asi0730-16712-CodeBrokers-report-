@@ -1,0 +1,140 @@
+@startuml
+title Class Diagram - Bounded Context: Notification
+!include _style.iuml
+
+package VitaLink.Notification {
+ package Domain {
+
+  package Repositories {
+    interface INotificationRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: NotificationId) : Task<Notification?>
+      + FindByRecipientAsync(id: UserId) : Task<IReadOnlyList<Notification>>
+      + FindRetryableAsync(maxAttempts: int) : Task<IReadOnlyList<Notification>>
+      + SaveAsync(notification: Notification) : Task<Notification>
+    }
+  }
+
+  package Services {
+    interface IEmailSenderService <<Port (Interface)>> {
+      + SendAsync(recipient: string, content: MessageContent) : Task<DeliveryReceipt>
+    }
+    interface ISmsSenderService <<Port (Interface)>> {
+      + SendAsync(phoneNumber: string, content: MessageContent) : Task<DeliveryReceipt>
+    }
+    class ChannelSelectionPolicy <<Specification>> {
+      + SelectFor(severity: SeverityLevel) : IReadOnlyList<NotificationChannel>
+    }
+    class AlertRaisedHandler <<Event Handler>> {
+      - repository : INotificationRepository
+      - policy : ChannelSelectionPolicy
+      --
+      + HandleAsync(raised: AlertRaised) : Task
+    }
+  }
+
+  package Model {
+
+   package Aggregates {
+    entity "Notification" as NotificationAgg <<Aggregate Root>> {
+      - id : NotificationId
+      - recipientId : UserId
+      - relatedAlertId : AlertId?
+      - channel : NotificationChannel
+      - content : MessageContent
+      - status : DeliveryStatus
+      - attempts : int
+      - createdAt : DateTimeOffset
+      - sentAt : DateTimeOffset?
+      - failureReason : string?
+      --
+      + Notification(recipientId: UserId, channel: NotificationChannel, content: MessageContent)
+      + MarkAsSent(receipt: DeliveryReceipt) : void
+      + MarkAsFailed(reason: string) : void
+      + CanRetry(maxAttempts: int) : bool
+      + LinkToAlert(alertId: AlertId) : void
+      + IsDelivered() : bool
+      - EnsureNotAlreadySent() : void
+    }
+   }
+
+   package ValueObjects {
+    class NotificationId <<Value Object (Record)>> {
+      + Value : Guid
+      --
+      + {static} New() : NotificationId
+    }
+    class MessageContent <<Value Object (Record)>> {
+      + Subject : string
+      + Body : string
+      --
+      + MessageContent(subject: string, body: string)
+      - EnsureNotEmpty(value: string) : void
+    }
+    class DeliveryReceipt <<Value Object (Record)>> {
+      + ProviderMessageId : string
+      + AcceptedAt : DateTimeOffset
+    }
+    enum NotificationChannel <<Enumeration>> {
+      EMAIL
+      SMS
+    }
+    enum DeliveryStatus <<Enumeration>> {
+      PENDING
+      SENT
+      FAILED
+    }
+   }
+
+   package Events {
+    class NotificationDispatched <<Domain Event (Record)>> {
+      + NotificationId : NotificationId
+      + Channel : NotificationChannel
+      + OccurredOn : DateTimeOffset
+    }
+   }
+  }
+ }
+}
+
+package VitaLink.SharedKernel {
+  enum SeverityLevel <<Enumeration>> {
+    HIGH
+    MEDIUM
+    LOW
+  }
+}
+
+package "Referencias externas (por identidad)" {
+  class UserId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class AlertId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class AlertRaised <<Domain Event (Record)>> {
+    + AlertId : AlertId
+    + Severity : SeverityLevel
+  }
+}
+
+INotificationRepository "1" ..> "0..*" NotificationAgg : persiste y recupera
+
+NotificationAgg "1" *--> "1" NotificationId : identificado por
+NotificationAgg "1" *--> "1" MessageContent : transporta
+NotificationAgg "1" --> "1" NotificationChannel : se entrega por
+NotificationAgg "1" --> "1" DeliveryStatus : se encuentra en
+NotificationAgg "1" ..> "0..1" DeliveryReceipt : confirma con
+NotificationAgg "0..*" ..> "1" UserId : dirigida a (por Id)
+NotificationAgg "0..*" ..> "0..1" AlertId : origina en (por Id)
+NotificationAgg "1" ..> "0..*" NotificationDispatched : publica
+
+AlertRaisedHandler ..> AlertRaised : reacciona a
+AlertRaisedHandler "1" o--> "1" ChannelSelectionPolicy : selecciona canales con
+AlertRaisedHandler "1" ..> "1..*" NotificationAgg : crea
+ChannelSelectionPolicy ..> SeverityLevel : decide segun
+NotificationAgg ..> IEmailSenderService : delega el envio en
+NotificationAgg ..> ISmsSenderService : delega el envio en
+
+!include _legend.iuml
+caption Traduccion de eventos de dominio en notificaciones multicanal al familiar y al proveedor de salud
+@enduml

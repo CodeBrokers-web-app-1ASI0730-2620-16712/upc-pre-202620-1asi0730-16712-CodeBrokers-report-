@@ -1,0 +1,114 @@
+@startuml
+title Class Diagram - Bounded Context: Care Coordination
+!include _style.iuml
+
+package VitaLink.CareCoordination {
+ package Domain {
+
+  package Repositories {
+    interface ICareRecordRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: CareRecordId) : Task<CareRecord?>
+      + FindByAlertAsync(id: AlertId) : Task<IReadOnlyList<CareRecord>>
+      + FindByOlderAdultAsync(id: OlderAdultId, from: DateTimeOffset, to: DateTimeOffset) : Task<IReadOnlyList<CareRecord>>
+      + FindLatestByAlertAsync(id: AlertId) : Task<CareRecord?>
+      + ExistsForAlertAsync(id: AlertId) : Task<bool>
+      + SaveAsync(careRecord: CareRecord) : Task<CareRecord>
+    }
+  }
+
+  package Services {
+    class CareRecordCreationPolicy <<Specification>> {
+      + IsSatisfiedBy(alertId: AlertId, providerId: CareProviderId) : bool
+      + Reason() : string
+    }
+  }
+
+  package Model {
+
+   package Aggregates {
+    entity CareRecord <<Aggregate Root>> {
+      - id : CareRecordId
+      - alertId : AlertId
+      - careProviderId : CareProviderId
+      - attendedBy : UserId
+      - observation : Observation?
+      - outcome : CareOutcome
+      - attendedAt : DateTimeOffset
+      --
+      + CareRecord(alertId: AlertId, careProviderId: CareProviderId, attendedBy: UserId)
+      + AddObservation(text: string) : void
+      + SetOutcome(outcome: CareOutcome) : void
+      + HasObservation() : bool
+      + AttendedByProfessional() : UserId
+      + Traceability() : string
+      - EnsureObservationNotAlreadySet() : void
+    }
+   }
+
+   package ValueObjects {
+    class CareRecordId <<Value Object (Record)>> {
+      + Value : Guid
+      --
+      + {static} New() : CareRecordId
+    }
+    class Observation <<Value Object (Record)>> {
+      + Text : string
+      + WrittenAt : DateTimeOffset
+      --
+      + Observation(text: string)
+      - EnsureMaxLength(text: string) : void
+      + Excerpt(length: int) : string
+    }
+    enum CareOutcome <<Enumeration>> {
+      RESOLVED_REMOTELY
+      IN_PERSON_VISIT_SCHEDULED
+      REFERRED_TO_EMERGENCY
+      NO_ACTION_REQUIRED
+    }
+   }
+
+   package Events {
+    class AlertAttended <<Domain Event (Record)>> {
+      + CareRecordId : CareRecordId
+      + AlertId : AlertId
+      + AttendedBy : UserId
+      + Outcome : CareOutcome
+      + OccurredOn : DateTimeOffset
+    }
+   }
+  }
+ }
+}
+
+package "Referencias externas (por identidad)" {
+  class AlertId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class CareProviderId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class UserId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class AlertStatusChanged <<Domain Event (Record)>> {
+    + AlertId : AlertId
+    + ToStatus : string
+  }
+}
+
+ICareRecordRepository "1" ..> "0..*" CareRecord : persiste y recupera
+
+CareRecord "1" *--> "1" CareRecordId : identificado por
+CareRecord "1" *--> "0..1" Observation : documenta mediante
+CareRecord "1" --> "1" CareOutcome : concluye con
+CareRecord "0..*" ..> "1" AlertId : atiende la (por Id)
+CareRecord "0..*" ..> "1" CareProviderId : ejecutado por (por Id)
+CareRecord "0..*" ..> "1" UserId : trazado a (por Id)
+CareRecord "1" ..> "0..*" AlertAttended : publica
+CareRecord ..> CareRecordCreationPolicy : valida su apertura con
+
+CareRecordCreationPolicy ..> AlertStatusChanged : reacciona a
+
+!include _legend.iuml
+caption Atencion de la alerta, observaciones del profesional y trazabilidad de la intervencion (US-12, US-13, US-14, US-18)
+@enduml

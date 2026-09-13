@@ -1,0 +1,100 @@
+@startuml
+title Class Diagram - Bounded Context: Marketing
+!include _style.iuml
+
+package VitaLink.Marketing {
+ package Domain {
+
+  package Repositories {
+    interface IContactRequestRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: ContactRequestId) : Task<ContactRequest?>
+      + FindByStatusAsync(status: LeadStatus) : Task<IReadOnlyList<ContactRequest>>
+      + ExistsRecentByEmailAsync(email: Email, within: TimeSpan) : Task<bool>
+      + SaveAsync(request: ContactRequest) : Task<ContactRequest>
+    }
+  }
+
+  package Services {
+    class DuplicateLeadPolicy <<Specification>> {
+      + IsSatisfiedBy(email: Email) : bool
+      + Reason() : string
+    }
+  }
+
+  package Model {
+
+   package Aggregates {
+    entity ContactRequest <<Aggregate Root>> {
+      - id : ContactRequestId
+      - fullName : string
+      - email : Email
+      - specialty : Specialty?
+      - segment : VisitorSegment
+      - message : string?
+      - status : LeadStatus
+      - receivedAt : DateTimeOffset
+      - attendedAt : DateTimeOffset?
+      --
+      + ContactRequest(fullName: string, email: Email, segment: VisitorSegment)
+      + DeclareSpecialty(specialty: Specialty) : void
+      + AttachMessage(message: string) : void
+      + MarkAsAttended() : void
+      + Discard(reason: string) : void
+      + IsPending() : bool
+      - EnsureStillPending() : void
+    }
+   }
+
+   package ValueObjects {
+    class ContactRequestId <<Value Object (Record)>> {
+      + Value : Guid
+      --
+      + {static} New() : ContactRequestId
+    }
+    class Specialty <<Value Object (Record)>> {
+      + Value : string
+      --
+      + Specialty(value: string)
+    }
+    enum VisitorSegment <<Enumeration>> {
+      CARE_PROVIDER
+      FAMILY_CAREGIVER
+    }
+    enum LeadStatus <<Enumeration>> {
+      PENDING
+      ATTENDED
+      DISCARDED
+    }
+   }
+
+   package Events {
+    class ContactRequestReceived <<Domain Event (Record)>> {
+      + ContactRequestId : ContactRequestId
+      + Email : Email
+      + Segment : VisitorSegment
+      + OccurredOn : DateTimeOffset
+    }
+   }
+  }
+ }
+}
+
+package "Referencias externas (por identidad)" {
+  class Email <<Value Object (Record)>> {
+    + Value : string
+  }
+}
+
+IContactRequestRepository "1" ..> "0..*" ContactRequest : persiste y recupera
+
+ContactRequest "1" *--> "1" ContactRequestId : identificado por
+ContactRequest "1" *--> "1" Email : contacta mediante
+ContactRequest "1" *--> "0..1" Specialty : declara la
+ContactRequest "1" --> "1" VisitorSegment : clasificado como
+ContactRequest "1" --> "1" LeadStatus : se encuentra en
+ContactRequest "1" ..> "0..*" ContactRequestReceived : publica
+ContactRequest ..> DuplicateLeadPolicy : valida su registro con
+
+!include _legend.iuml
+caption Solicitudes de informacion y leads provenientes de la Landing Page (US-03, US-06)
+@enduml

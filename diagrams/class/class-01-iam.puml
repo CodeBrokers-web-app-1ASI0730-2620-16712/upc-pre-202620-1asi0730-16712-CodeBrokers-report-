@@ -1,0 +1,104 @@
+@startuml
+title Class Diagram - Bounded Context: Identity and Access Management
+!include _style.iuml
+
+package VitaLink.IAM {
+ package Domain {
+
+  package Repositories {
+    interface IUserRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: UserId) : Task<User?>
+      + FindByEmailAsync(email: Email) : Task<User?>
+      + ExistsByEmailAsync(email: Email) : Task<bool>
+      + SaveAsync(user: User) : Task<User>
+    }
+  }
+
+  package Services {
+    interface IPasswordHasher <<Port (Interface)>> {
+      + Hash(plainText: string) : PasswordHash
+      + Matches(plainText: string, hash: PasswordHash) : bool
+    }
+  }
+
+  package Model {
+
+   package Aggregates {
+    entity User <<Aggregate Root>> {
+      - id : UserId
+      - email : Email
+      - passwordHash : PasswordHash
+      - role : UserRole
+      - isVerified : bool
+      - isActive : bool
+      - createdAt : DateTimeOffset
+      - lastAccessAt : DateTimeOffset?
+      --
+      + User(email: Email, passwordHash: PasswordHash, role: UserRole)
+      + VerifyAccount() : void
+      + RegisterAccess() : void
+      + ChangePassword(newHash: PasswordHash) : void
+      + Deactivate() : void
+      + IsEnabled() : bool
+      + GetId() : UserId
+      + GetEmail() : Email
+      + GetRole() : UserRole
+      - EnsureNotDeactivated() : void
+    }
+   }
+
+   package ValueObjects {
+    class UserId <<Value Object (Record)>> {
+      + Value : Guid
+      --
+      + UserId(value: Guid)
+      + {static} New() : UserId
+      + {static} Of(value: string) : UserId
+    }
+    class Email <<Value Object (Record)>> {
+      + Value : string
+      --
+      + Email(value: string)
+      - EnsureValidFormat(value: string) : void
+      + Domain() : string
+    }
+    class PasswordHash <<Value Object (Record)>> {
+      + Value : string
+      --
+      + PasswordHash(value: string)
+    }
+    enum UserRole <<Enumeration>> {
+      OLDER_ADULT
+      FAMILY_CAREGIVER
+      CARE_PROVIDER
+    }
+   }
+
+   package Events {
+    class UserRegistered <<Domain Event (Record)>> {
+      + UserId : UserId
+      + Email : Email
+      + Role : UserRole
+      + OccurredOn : DateTimeOffset
+    }
+    class AccountVerified <<Domain Event (Record)>> {
+      + UserId : UserId
+      + OccurredOn : DateTimeOffset
+    }
+   }
+  }
+ }
+}
+
+IUserRepository "1" ..> "0..*" User : persiste y recupera
+User "1" *--> "1" UserId : identificado por
+User "1" *--> "1" Email : se autentica con
+User "1" *--> "1" PasswordHash : protege su acceso con
+User "1" --> "1" UserRole : opera bajo el
+User "1" ..> "0..*" UserRegistered : publica
+User "1" ..> "0..*" AccountVerified : publica
+User ..> IPasswordHasher : delega el cifrado en
+
+!include _legend.iuml
+caption Credenciales, autenticacion y ciclo de vida de la cuenta (US-06)
+@enduml

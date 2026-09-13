@@ -1,0 +1,161 @@
+@startuml
+title Class Diagram - Bounded Context: Alerting
+!include _style.iuml
+
+package VitaLink.Alerting {
+ package Domain {
+
+  package Repositories {
+    interface IAlertRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: AlertId) : Task<Alert?>
+      + CountPendingByCareProviderAsync(id: CareProviderId) : Task<int>
+      + FindByCareProviderOrderBySeverityAsync(id: CareProviderId, status: AlertStatus?) : Task<IReadOnlyList<Alert>>
+      + FindByOlderAdultAsync(id: OlderAdultId) : Task<IReadOnlyList<Alert>>
+      + SaveAsync(alert: Alert) : Task<Alert>
+    }
+  }
+
+  package Services {
+    class SeverityAssignmentService <<Domain Service>> {
+      + Assign(detected: RiskSituationDetected) : SeverityLevel
+      - EscalateIfRepeated(olderAdultId: OlderAdultId, baseLevel: SeverityLevel) : SeverityLevel
+    }
+    class InvalidAlertTransitionException <<Domain Exception>> {
+      + From : AlertStatus
+      + To : AlertStatus
+      --
+      + InvalidAlertTransitionException(from: AlertStatus, to: AlertStatus)
+    }
+  }
+
+  package Model {
+
+   package Aggregates {
+    entity Alert <<Aggregate Root>> {
+      - id : AlertId
+      - olderAdultId : OlderAdultId
+      - healthRecordId : HealthRecordId
+      - monitoringRuleId : MonitoringRuleId
+      - assignedProviderId : CareProviderId?
+      - severity : SeverityLevel
+      - status : AlertStatus
+      - raisedAt : DateTimeOffset
+      - lastStatusChangeAt : DateTimeOffset
+      - statusHistory : List<AlertStatusChange>
+      --
+      + Alert(olderAdultId: OlderAdultId, healthRecordId: HealthRecordId, monitoringRuleId: MonitoringRuleId, severity: SeverityLevel)
+      + AssignTo(providerId: CareProviderId) : void
+      + StartReview(reviewerId: UserId) : void
+      + MarkAsAttended(reviewerId: UserId) : void
+      + Close(reviewerId: UserId) : void
+      + IsReviewed() : bool
+      + ReviewedBy() : UserId?
+      + IsPending() : bool
+      + GetSeverity() : SeverityLevel
+      - ValidateTransition(target: AlertStatus) : void
+      - RegisterStatusChange(target: AlertStatus, changedBy: UserId) : void
+    }
+   }
+
+   package Entities {
+    entity AlertStatusChange <<Entity>> {
+      - id : AlertStatusChangeId
+      - fromStatus : AlertStatus
+      - toStatus : AlertStatus
+      - changedBy : UserId
+      - changedAt : DateTimeOffset
+      --
+      ~ AlertStatusChange(from: AlertStatus, to: AlertStatus, changedBy: UserId)
+      + Describe() : string
+    }
+   }
+
+   package ValueObjects {
+    class AlertId <<Value Object (Record)>> {
+      + Value : Guid
+      --
+      + {static} New() : AlertId
+    }
+    class AlertStatusChangeId <<Value Object (Record)>> {
+      + Value : Guid
+    }
+    enum AlertStatus <<Enumeration>> {
+      PENDING
+      IN_REVIEW
+      ATTENDED
+      CLOSED
+    }
+   }
+
+   package Events {
+    class AlertRaised <<Domain Event (Record)>> {
+      + AlertId : AlertId
+      + OlderAdultId : OlderAdultId
+      + Severity : SeverityLevel
+      + OccurredOn : DateTimeOffset
+    }
+    class AlertStatusChanged <<Domain Event (Record)>> {
+      + AlertId : AlertId
+      + FromStatus : AlertStatus
+      + ToStatus : AlertStatus
+      + ChangedBy : UserId
+      + OccurredOn : DateTimeOffset
+    }
+   }
+  }
+ }
+}
+
+package VitaLink.SharedKernel {
+  enum SeverityLevel <<Enumeration>> {
+    HIGH
+    MEDIUM
+    LOW
+  }
+}
+
+package "Referencias externas (por identidad)" {
+  class OlderAdultId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class CareProviderId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class HealthRecordId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class MonitoringRuleId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class UserId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class RiskSituationDetected <<Domain Event (Record)>> {
+    + OlderAdultId : OlderAdultId
+    + Severity : SeverityLevel
+  }
+}
+
+IAlertRepository "1" ..> "0..*" Alert : persiste y recupera
+
+Alert "1" *--> "1" AlertId : identificado por
+Alert "1" *--> "1..*" AlertStatusChange : registra su trazabilidad en
+Alert "1" --> "1" AlertStatus : se encuentra en
+Alert "1" --> "1" SeverityLevel : priorizada segun
+Alert "0..*" ..> "1" OlderAdultId : concierne a (por Id)
+Alert "0..*" ..> "1" HealthRecordId : originada por (por Id)
+Alert "0..*" ..> "1" MonitoringRuleId : disparada por la regla (por Id)
+Alert "0..*" ..> "0..1" CareProviderId : asignada a (por Id)
+Alert "1" ..> "0..*" AlertRaised : publica
+Alert "1" ..> "0..*" AlertStatusChanged : publica
+Alert ..> InvalidAlertTransitionException : lanza
+
+AlertStatusChange "1" *--> "1" AlertStatusChangeId : identificado por
+AlertStatusChange "0..*" ..> "1" UserId : realizado por (por Id)
+
+SeverityAssignmentService ..> RiskSituationDetected : consume
+SeverityAssignmentService "1" ..> "1" SeverityLevel : determina
+
+!include _legend.iuml
+caption Creacion de la alerta, nivel de gravedad y ciclo de vida de estados sin borrado fisico (US-08, US-09, US-15, US-16, US-19)
+@enduml

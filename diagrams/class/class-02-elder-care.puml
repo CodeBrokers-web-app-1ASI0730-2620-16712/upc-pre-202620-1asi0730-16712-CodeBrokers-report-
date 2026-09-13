@@ -1,0 +1,195 @@
+@startuml
+title Class Diagram - Bounded Context: Elder Care
+!include _style.iuml
+
+package VitaLink.ElderCare {
+ package Domain {
+
+  package Repositories {
+    interface IOlderAdultRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: OlderAdultId) : Task<OlderAdult?>
+      + FindByCaregiverIdAsync(id: FamilyCaregiverId) : Task<IReadOnlyList<OlderAdult>>
+      + FindByCareProviderIdAsync(id: CareProviderId) : Task<IReadOnlyList<OlderAdult>>
+      + SaveAsync(olderAdult: OlderAdult) : Task<OlderAdult>
+    }
+    interface ICareProviderRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: CareProviderId) : Task<CareProvider?>
+      + FindByUserIdAsync(id: UserId) : Task<CareProvider?>
+      + SaveAsync(careProvider: CareProvider) : Task<CareProvider>
+    }
+    interface IFamilyCaregiverRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: FamilyCaregiverId) : Task<FamilyCaregiver?>
+      + FindByUserIdAsync(id: UserId) : Task<FamilyCaregiver?>
+      + SaveAsync(caregiver: FamilyCaregiver) : Task<FamilyCaregiver>
+    }
+  }
+
+  package Services {
+    class MandatoryProfileDataPolicy <<Specification>> {
+      + IsSatisfiedBy(olderAdult: OlderAdult) : bool
+      + MissingFields(olderAdult: OlderAdult) : IReadOnlyList<string>
+    }
+  }
+
+  package Model {
+
+   package Aggregates {
+    entity OlderAdult <<Aggregate Root>> {
+      - id : OlderAdultId
+      - userId : UserId?
+      - fullName : FullName
+      - birthDate : DateOnly
+      - address : Address
+      - emergencyContact : EmergencyContact
+      - assignedProviderId : CareProviderId?
+      - isMonitoringActive : bool
+      - caregiverAssignments : List<CaregiverAssignment>
+      --
+      + OlderAdult(fullName: FullName, birthDate: DateOnly, address: Address)
+      + ActivateMonitoring(policy: MandatoryProfileDataPolicy) : void
+      + LinkCareProvider(providerId: CareProviderId) : void
+      + UnlinkCareProvider() : void
+      + AssignCaregiver(caregiverId: FamilyCaregiverId, relation: RelationshipType, emergencyAuthorized: bool) : void
+      + RevokeCaregiver(caregiverId: FamilyCaregiverId) : void
+      + IsUnlinked() : bool
+      + Age() : int
+      - EnsureNoActiveProvider() : void
+    }
+    entity CareProvider <<Aggregate Root>> {
+      - id : CareProviderId
+      - userId : UserId
+      - fullName : FullName
+      - specialty : Specialty
+      - institution : string?
+      - isActive : bool
+      --
+      + CareProvider(userId: UserId, fullName: FullName, specialty: Specialty)
+      + UpdateSpecialty(specialty: Specialty) : void
+      + Deactivate() : void
+    }
+    entity FamilyCaregiver <<Aggregate Root>> {
+      - id : FamilyCaregiverId
+      - userId : UserId
+      - fullName : FullName
+      - contactInfo : ContactInfo
+      --
+      + FamilyCaregiver(userId: UserId, fullName: FullName, contactInfo: ContactInfo)
+      + UpdateContactInfo(contactInfo: ContactInfo) : void
+    }
+   }
+
+   package Entities {
+    entity CaregiverAssignment <<Entity>> {
+      - id : CaregiverAssignmentId
+      - caregiverId : FamilyCaregiverId
+      - relationship : RelationshipType
+      - isEmergencyAuthorized : bool
+      - assignedAt : DateTimeOffset
+      - revokedAt : DateTimeOffset?
+      --
+      ~ CaregiverAssignment(caregiverId: FamilyCaregiverId, relationship: RelationshipType, emergencyAuthorized: bool)
+      + IsActive() : bool
+      ~ Revoke() : void
+    }
+   }
+
+   package ValueObjects {
+    class OlderAdultId <<Value Object (Record)>> {
+      + Value : Guid
+      --
+      + {static} New() : OlderAdultId
+    }
+    class CareProviderId <<Value Object (Record)>> {
+      + Value : Guid
+    }
+    class FamilyCaregiverId <<Value Object (Record)>> {
+      + Value : Guid
+    }
+    class FullName <<Value Object (Record)>> {
+      + FirstName : string
+      + LastName : string
+      --
+      + FullName(firstName: string, lastName: string)
+      + Display() : string
+    }
+    class Address <<Value Object (Record)>> {
+      + Street : string
+      + District : string
+      + City : string
+      --
+      + Address(street: string, district: string, city: string)
+    }
+    class ContactInfo <<Value Object (Record)>> {
+      + PhoneNumber : string
+      + AlternatePhone : string?
+      --
+      + ContactInfo(phoneNumber: string, alternatePhone: string?)
+      - EnsureValidPhoneNumber(value: string) : void
+    }
+    class EmergencyContact <<Value Object (Record)>> {
+      + Name : string
+      + PhoneNumber : string
+      --
+      + EmergencyContact(name: string, phoneNumber: string)
+      - EnsureValidPhoneNumber(value: string) : void
+    }
+    class Specialty <<Value Object (Record)>> {
+      + Value : string
+    }
+    enum RelationshipType <<Enumeration>> {
+      SON_OR_DAUGHTER
+      SPOUSE
+      SIBLING
+      PROFESSIONAL_CAREGIVER
+      OTHER
+    }
+   }
+
+   package Events {
+    class OlderAdultRegistered <<Domain Event (Record)>> {
+      + OlderAdultId : OlderAdultId
+      + OccurredOn : DateTimeOffset
+    }
+    class MonitoringActivated <<Domain Event (Record)>> {
+      + OlderAdultId : OlderAdultId
+      + OccurredOn : DateTimeOffset
+    }
+    class CareProviderLinked <<Domain Event (Record)>> {
+      + OlderAdultId : OlderAdultId
+      + CareProviderId : CareProviderId
+      + OccurredOn : DateTimeOffset
+    }
+   }
+  }
+ }
+}
+
+IOlderAdultRepository "1" ..> "0..*" OlderAdult : persiste y recupera
+ICareProviderRepository "1" ..> "0..*" CareProvider : persiste y recupera
+IFamilyCaregiverRepository "1" ..> "0..*" FamilyCaregiver : persiste y recupera
+
+OlderAdult "1" *--> "1" OlderAdultId : identificado por
+OlderAdult "1" *--> "1" FullName : se nombra con
+OlderAdult "1" *--> "1" Address : reside en
+OlderAdult "1" *--> "1" EmergencyContact : escala emergencias a
+OlderAdult "1" *--> "0..*" CaregiverAssignment : delega su cuidado en
+OlderAdult "0..*" ..> "0..1" CareProviderId : vinculado a (por Id)
+OlderAdult ..> MandatoryProfileDataPolicy : valida su activacion con
+OlderAdult "1" ..> "0..*" MonitoringActivated : publica
+OlderAdult "1" ..> "0..*" CareProviderLinked : publica
+OlderAdult "1" ..> "0..*" OlderAdultRegistered : publica
+
+CaregiverAssignment "1" *--> "1" RelationshipType : califica el vinculo como
+CaregiverAssignment "0..*" ..> "1" FamilyCaregiverId : referencia (por Id)
+
+CareProvider "1" *--> "1" CareProviderId : identificado por
+CareProvider "1" *--> "1" Specialty : ejerce la
+CareProvider "1" *--> "1" FullName : se nombra con
+
+FamilyCaregiver "1" *--> "1" FamilyCaregiverId : identificado por
+FamilyCaregiver "1" *--> "1" ContactInfo : contacta mediante
+FamilyCaregiver "1" *--> "1" FullName : se nombra con
+
+!include _legend.iuml
+caption Perfiles del adulto mayor, del familiar y del proveedor de salud, y su vinculacion (US-20, US-21)
+@enduml

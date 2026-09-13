@@ -1,0 +1,172 @@
+@startuml
+title Class Diagram - Bounded Context: Preventive Monitoring
+!include _style.iuml
+
+package VitaLink.PreventiveMonitoring {
+ package Domain {
+
+  package Repositories {
+    interface IHealthRecordRepository <<Repository (Interface)>> {
+      + FindByIdAsync(id: HealthRecordId) : Task<HealthRecord?>
+      + FindByOlderAdultAsync(id: OlderAdultId, from: DateTimeOffset, to: DateTimeOffset, type: RecordType?) : Task<IReadOnlyList<HealthRecord>>
+      + FindLatestByOlderAdultAsync(id: OlderAdultId, take: int) : Task<IReadOnlyList<HealthRecord>>
+      + SaveAsync(record: HealthRecord) : Task<HealthRecord>
+    }
+    interface IMonitoringRuleRepository <<Repository (Interface)>> {
+      + FindActiveByOlderAdultAsync(id: OlderAdultId, type: RecordType) : Task<IReadOnlyList<MonitoringRule>>
+      + SaveAsync(rule: MonitoringRule) : Task<MonitoringRule>
+    }
+  }
+
+  package Services {
+    class RiskEvaluationService <<Domain Service>> {
+      - ruleRepository : IMonitoringRuleRepository
+      --
+      + RiskEvaluationService(ruleRepository: IMonitoringRuleRepository)
+      + EvaluateAsync(record: HealthRecord) : Task<RiskSituationDetected?>
+      - SelectHighestSeverity(matches: IReadOnlyList<MonitoringRule>) : MonitoringRule
+    }
+    class NoMonitoringRuleConfiguredException <<Domain Exception>> {
+      + OlderAdultId : OlderAdultId
+      + RecordType : RecordType
+      --
+      + NoMonitoringRuleConfiguredException(id: OlderAdultId, type: RecordType)
+    }
+  }
+
+  package Model {
+
+   package Aggregates {
+    entity HealthRecord <<Aggregate Root>> {
+      - id : HealthRecordId
+      - olderAdultId : OlderAdultId
+      - type : RecordType
+      - measurement : Measurement
+      - note : string?
+      - source : RecordSource
+      - recordedBy : UserId
+      - recordedAt : DateTimeOffset
+      --
+      + HealthRecord(olderAdultId: OlderAdultId, type: RecordType, measurement: Measurement, source: RecordSource, recordedBy: UserId)
+      + AttachNote(note: string) : void
+      + Summary() : string
+      + GetMeasurement() : Measurement
+      - EnsureMeasurementMatchesType() : void
+    }
+    entity MonitoringRule <<Aggregate Root>> {
+      - id : MonitoringRuleId
+      - olderAdultId : OlderAdultId
+      - type : RecordType
+      - threshold : Threshold
+      - severity : SeverityLevel
+      - isActive : bool
+      --
+      + MonitoringRule(olderAdultId: OlderAdultId, type: RecordType, threshold: Threshold, severity: SeverityLevel)
+      + Matches(record: HealthRecord) : bool
+      + Deactivate() : void
+      + GetSeverity() : SeverityLevel
+    }
+   }
+
+   package ValueObjects {
+    class HealthRecordId <<Value Object (Record)>> {
+      + Value : Guid
+      --
+      + {static} New() : HealthRecordId
+    }
+    class MonitoringRuleId <<Value Object (Record)>> {
+      + Value : Guid
+    }
+    class Measurement <<Value Object (Record)>> {
+      + Value : decimal
+      + Unit : string
+      --
+      + Measurement(value: decimal, unit: string)
+      - EnsureNonNegative(value: decimal) : void
+    }
+    class Threshold <<Value Object (Record)>> {
+      + MinValue : decimal?
+      + MaxValue : decimal?
+      --
+      + Threshold(min: decimal?, max: decimal?)
+      + IsExceededBy(measurement: Measurement) : bool
+      - EnsureBoundsAreConsistent() : void
+    }
+    enum RecordType <<Enumeration>> {
+      BLOOD_PRESSURE
+      HEART_RATE
+      GLUCOSE
+      BODY_TEMPERATURE
+      WEIGHT
+      FALL_DETECTED
+      MEDICATION_INTAKE
+      GENERAL_NOTE
+    }
+    enum RecordSource <<Enumeration>> {
+      OLDER_ADULT
+      FAMILY_CAREGIVER
+      CARE_PROVIDER
+    }
+   }
+
+   package Events {
+    class HealthRecordRegistered <<Domain Event (Record)>> {
+      + HealthRecordId : HealthRecordId
+      + OlderAdultId : OlderAdultId
+      + Type : RecordType
+      + OccurredOn : DateTimeOffset
+    }
+    class RiskSituationDetected <<Domain Event (Record)>> {
+      + HealthRecordId : HealthRecordId
+      + OlderAdultId : OlderAdultId
+      + MonitoringRuleId : MonitoringRuleId
+      + Severity : SeverityLevel
+      + OccurredOn : DateTimeOffset
+    }
+   }
+  }
+ }
+}
+
+
+package VitaLink.SharedKernel {
+  enum SeverityLevel <<Enumeration>> {
+    HIGH
+    MEDIUM
+    LOW
+  }
+}
+
+package "Referencias externas (por identidad)" {
+  class OlderAdultId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+  class UserId <<Value Object (Record)>> {
+    + Value : Guid
+  }
+}
+
+IHealthRecordRepository "1" ..> "0..*" HealthRecord : persiste y recupera
+IMonitoringRuleRepository "1" ..> "0..*" MonitoringRule : persiste y recupera
+
+HealthRecord "1" *--> "1" HealthRecordId : identificado por
+HealthRecord "1" *--> "1" Measurement : cuantifica mediante
+HealthRecord "1" --> "1" RecordType : clasificado como
+HealthRecord "1" --> "1" RecordSource : capturado desde
+HealthRecord "0..*" ..> "1" OlderAdultId : pertenece a (por Id)
+HealthRecord "0..*" ..> "1" UserId : registrado por (por Id)
+HealthRecord "1" ..> "0..*" HealthRecordRegistered : publica
+
+MonitoringRule "1" *--> "1" MonitoringRuleId : identificado por
+MonitoringRule "1" *--> "1" Threshold : evalua contra
+MonitoringRule "1" --> "1" RecordType : aplica sobre
+MonitoringRule "1" --> "1" SeverityLevel : califica con
+
+RiskEvaluationService "1" o--> "0..*" MonitoringRule : consulta las reglas activas
+RiskEvaluationService ..> HealthRecord : evalua
+RiskEvaluationService "1" ..> "0..1" RiskSituationDetected : publica
+RiskEvaluationService ..> NoMonitoringRuleConfiguredException : lanza
+
+!include _legend.iuml
+caption Registro de informacion de salud, historial cronologico y evaluacion de reglas de monitoreo (US-11, US-15, US-17)
+@enduml
