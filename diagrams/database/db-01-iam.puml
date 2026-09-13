@@ -1,0 +1,36 @@
+@startuml
+title Database Diagram - Bounded Context: Identity and Access Management (schema iam)
+!include _dbstyle.iuml
+
+entity "**iam.users**" as users OWN {
+  * **id** : UUID <<PK>>
+  --
+  * email : VARCHAR(255) <<UQ>>
+  * password_hash : VARCHAR(255)
+  * role : VARCHAR(20) <<CK>>
+  * is_verified : BOOLEAN = FALSE
+  * is_active : BOOLEAN = TRUE
+  * created_at : TIMESTAMPTZ = NOW()
+  o last_access_at : TIMESTAMPTZ
+  --
+  <b>CK</b> role IN ('OLDER_ADULT','FAMILY_CAREGIVER','CARE_PROVIDER')
+  <b>CK</b> email cumple el patron RFC basico
+  <b>CK</b> last_access_at IS NULL OR last_access_at >= created_at
+  <b>UQ</b> (email)
+}
+
+note bottom of users
+  <b>Clave candidata natural:</b> email.
+  Se conserva como UNIQUE aunque la PK sea
+  el sustituto UUID, de modo que la relacion
+  se mantiene en BCNF: todo determinante
+  (id, email) es clave candidata.
+
+  <b>No se almacena</b> ningun dato de perfil:
+  nombres, telefonos y direcciones pertenecen
+  al bounded context Elder Care.
+end note
+
+!include _dblegend.iuml
+caption Cuenta de usuario, credenciales y rol (US-06)
+@enduml

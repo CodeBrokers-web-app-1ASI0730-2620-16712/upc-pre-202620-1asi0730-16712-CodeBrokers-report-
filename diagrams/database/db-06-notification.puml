@@ -1,0 +1,61 @@
+@startuml
+title Database Diagram - Bounded Context: Notification (schema notification)
+!include _dbstyle.iuml
+
+entity "iam.users" as users EXT {
+  * **id** : UUID <<PK>>
+  --
+  email : VARCHAR(255)
+}
+entity "alerting.alerts" as alerts EXT {
+  * **id** : UUID <<PK>>
+  --
+  severity : VARCHAR(10)
+}
+
+entity "**notification.notifications**" as notifications OWN {
+  * **id** : UUID <<PK>>
+  --
+  * recipient_id : UUID <<FK>>
+  o related_alert_id : UUID <<FK>>
+  * channel : VARCHAR(10) <<CK>>
+  * subject : VARCHAR(200)
+  * body : TEXT
+  * status : VARCHAR(10) <<CK>> = 'PENDING'
+  * attempts : SMALLINT <<CK>> = 0
+  o provider_message_id : VARCHAR(120)
+  * created_at : TIMESTAMPTZ = NOW()
+  o sent_at : TIMESTAMPTZ
+  o failure_reason : VARCHAR(300)
+  --
+  <b>CK</b> channel IN ('EMAIL','SMS')
+  <b>CK</b> status IN ('PENDING','SENT','FAILED')
+  <b>CK</b> attempts BETWEEN 0 AND 5
+  <b>CK</b> (status = 'SENT') = (sent_at IS NOT NULL)
+  <b>CK</b> (status = 'FAILED') = (failure_reason IS NOT NULL)
+  <b>CK</b> status <> 'SENT' OR provider_message_id IS NOT NULL
+  <b>CK</b> sent_at >= created_at
+  <b>IX</b> (recipient_id, created_at DESC)
+  <b>IX</b> (status, attempts) WHERE status = 'FAILED'
+}
+
+users ||--o{ notifications : "recibe\nON DELETE CASCADE"
+alerts ||--o{ notifications : "motiva\nON DELETE SET NULL"
+
+note bottom of notifications
+  <b>1FN:</b> una fila por destinatario y por canal. Una
+  alerta de gravedad alta genera dos filas (EMAIL y SMS),
+  nunca una sola fila con una lista de canales.
+
+  <b>3FN:</b> no se guarda el correo ni el telefono del
+  destinatario; dependen de recipient_id y viven en
+  iam.users y elder_care. Esto evita enviar a una
+  direccion desactualizada.
+
+  <b>ACL:</b> provider_message_id es el unico rastro del
+  proveedor externo, y se guarda como texto opaco.
+end note
+
+!include _dblegend.iuml
+caption Notificaciones multicanal, estado de entrega y reintentos
+@enduml

@@ -1,0 +1,16 @@
+hide circle
+hide methods
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam linetype ortho
+skinparam defaultFontName Arial
+skinparam defaultFontSize 12
+skinparam ArrowColor #333333
+skinparam class {
+  BackgroundColor #F2F2F2
+  BorderColor #333333
+  HeaderBackgroundColor #D6E4F0
+}
+skinparam classAttributeIconSize 0
+!define OWN #D6E4F0
+!define EXT #DDDDDD

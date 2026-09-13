@@ -1,0 +1,44 @@
+@startuml
+title Database Diagram - Bounded Context: Marketing (schema marketing)
+!include _dbstyle.iuml
+
+entity "**marketing.contact_requests**" as contact_requests OWN {
+  * **id** : UUID <<PK>>
+  --
+  * full_name : VARCHAR(160)
+  * email : VARCHAR(255) <<CK>>
+  o specialty : VARCHAR(120)
+  * segment : VARCHAR(20) <<CK>>
+  o message : TEXT
+  * status : VARCHAR(12) <<CK>> = 'PENDING'
+  * received_at : TIMESTAMPTZ = NOW()
+  o attended_at : TIMESTAMPTZ
+  --
+  <b>CK</b> segment IN ('CARE_PROVIDER','FAMILY_CAREGIVER')
+  <b>CK</b> status IN ('PENDING','ATTENDED','DISCARDED')
+  <b>CK</b> email cumple el patron RFC basico
+  <b>CK</b> (status = 'ATTENDED') = (attended_at IS NOT NULL)
+  <b>CK</b> segment = 'CARE_PROVIDER' OR specialty IS NULL
+  <b>CK</b> attended_at >= received_at
+  <b>IX</b> (status, received_at DESC)
+  <b>IX</b> (email, received_at DESC)
+}
+
+note bottom of contact_requests
+  <b>Sin FK hacia iam.users:</b> un lead es un visitante
+  anonimo que todavia no tiene cuenta. Su correo es un
+  dato propio de este contexto, no una referencia, y por
+  eso no existe dependencia transitiva con iam.users.
+
+  <b>US-03:</b> specialty solo puede declararse cuando el
+  visitante proviene del formulario de profesional de
+  salud; el CHECK lo impide en los demas casos.
+
+  <b>Contexto aislado:</b> Marketing no comparte ninguna
+  tabla con el resto del modelo, lo que le permite
+  evolucionar o migrarse sin afectar al dominio clinico.
+end note
+
+!include _dblegend.iuml
+caption Solicitudes de informacion y leads de la Landing Page (US-03, US-06)
+@enduml

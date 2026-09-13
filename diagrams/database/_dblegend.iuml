@@ -1,0 +1,11 @@
+legend right
+|= Marca |= Significado |
+| PK | primary key |
+| FK | foreign key |
+| UQ | unique constraint |
+| CK | check constraint |
+| IX | index |
+| * | NOT NULL |
+| o | nullable |
+| gris | tabla de otro bounded context |
+endlegend

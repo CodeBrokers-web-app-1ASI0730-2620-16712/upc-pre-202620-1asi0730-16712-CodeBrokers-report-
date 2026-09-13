@@ -1,0 +1,56 @@
+@startuml
+title Database Diagram - Bounded Context: Care Coordination (schema care_coordination)
+!include _dbstyle.iuml
+
+entity "iam.users" as users EXT {
+  * **id** : UUID <<PK>>
+}
+entity "elder_care.care_providers" as care_providers EXT {
+  * **id** : UUID <<PK>>
+}
+entity "alerting.alerts" as alerts EXT {
+  * **id** : UUID <<PK>>
+  --
+  older_adult_id : UUID <<FK>>
+  status : VARCHAR(15)
+}
+
+entity "**care_coordination.care_records**" as care_records OWN {
+  * **id** : UUID <<PK>>
+  --
+  * alert_id : UUID <<FK>>
+  * care_provider_id : UUID <<FK>>
+  * attended_by : UUID <<FK>>
+  o observation_text : TEXT
+  o observation_written_at : TIMESTAMPTZ
+  * outcome : VARCHAR(30) <<CK>>
+  * attended_at : TIMESTAMPTZ = NOW()
+  --
+  <b>CK</b> outcome IN (4 valores de CareOutcome)
+  <b>CK</b> (observation_text IS NULL) = (observation_written_at IS NULL)
+  <b>CK</b> char_length(observation_text) BETWEEN 1 AND 1000
+  <b>UQ</b> (alert_id, attended_by, attended_at)
+  <b>IX</b> (alert_id, attended_at DESC)
+}
+
+alerts ||--o{ care_records : "es atendida en\nON DELETE CASCADE"
+care_providers ||--o{ care_records : "ejecuta\nON DELETE RESTRICT"
+users ||--o{ care_records : "queda trazado a\nON DELETE RESTRICT"
+
+note bottom of care_records
+  <b>3FN:</b> no se almacena older_adult_id. Dependia
+  transitivamente de alert_id, que ya determina al
+  adulto mayor. El valor se obtiene uniendo con
+  alerting.alerts, y asi no puede quedar desfasado.
+
+  <b>US-13:</b> la observacion es opcional, por eso ambas
+  columnas admiten NULL; el CHECK de emparejamiento
+  impide que quede texto sin fecha o fecha sin texto.
+
+  <b>US-14:</b> varias filas por alerta permiten saber si
+  otro profesional ya la reviso, y quien lo hizo.
+end note
+
+!include _dblegend.iuml
+caption Registro de atencion, observaciones y trazabilidad de la intervencion (US-12, US-13, US-14, US-18)
+@enduml

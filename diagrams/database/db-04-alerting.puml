@@ -1,0 +1,85 @@
+@startuml
+title Database Diagram - Bounded Context: Alerting (schema alerting)
+!include _dbstyle.iuml
+
+entity "iam.users" as users EXT {
+  * **id** : UUID <<PK>>
+}
+entity "elder_care.older_adults" as older_adults EXT {
+  * **id** : UUID <<PK>>
+}
+entity "elder_care.care_providers" as care_providers EXT {
+  * **id** : UUID <<PK>>
+}
+entity "monitoring.health_records" as health_records EXT {
+  * **id** : UUID <<PK>>
+}
+entity "monitoring.monitoring_rules" as monitoring_rules EXT {
+  * **id** : UUID <<PK>>
+}
+
+entity "**alerting.alerts**" as alerts OWN {
+  * **id** : UUID <<PK>>
+  --
+  * older_adult_id : UUID <<FK>>
+  * health_record_id : UUID <<FK, UQ>>
+  * monitoring_rule_id : UUID <<FK>>
+  o assigned_provider_id : UUID <<FK>>
+  * severity : VARCHAR(10) <<CK>>
+  * status : VARCHAR(15) <<CK>> = 'PENDING'
+  * raised_at : TIMESTAMPTZ = NOW()
+  * last_status_change_at : TIMESTAMPTZ = NOW()
+  --
+  <b>CK</b> severity IN ('HIGH','MEDIUM','LOW')
+  <b>CK</b> status IN ('PENDING','IN_REVIEW','ATTENDED','CLOSED')
+  <b>CK</b> last_status_change_at >= raised_at
+  <b>UQ</b> (health_record_id)
+  <b>IX</b> (assigned_provider_id, status, severity)
+  <b>IX</b> (older_adult_id, raised_at DESC)
+}
+
+entity "**alerting.alert_status_changes**" as alert_status_changes OWN {
+  * **id** : UUID <<PK>>
+  --
+  * alert_id : UUID <<FK>>
+  * from_status : VARCHAR(15) <<CK>>
+  * to_status : VARCHAR(15) <<CK>>
+  * changed_by : UUID <<FK>>
+  * changed_at : TIMESTAMPTZ = NOW()
+  --
+  <b>CK</b> from_status y to_status IN (4 valores de AlertStatus)
+  <b>CK</b> from_status <> to_status
+  <b>UQ</b> (alert_id, changed_at)
+  <b>IX</b> (alert_id, changed_at DESC)
+}
+
+older_adults ||--o{ alerts : "concierne a\nON DELETE CASCADE"
+health_records ||--|| alerts : "origina como maximo una\nON DELETE CASCADE"
+monitoring_rules ||--o{ alerts : "dispara\nON DELETE RESTRICT"
+care_providers ||--o{ alerts : "tiene asignada\nON DELETE SET NULL"
+alerts ||--|{ alert_status_changes : "registra su trazabilidad en\nON DELETE CASCADE"
+users ||--o{ alert_status_changes : "realiza el cambio\nON DELETE RESTRICT"
+
+note bottom of alert_status_changes
+  <b>US-19:</b> ninguna transicion borra la alerta.
+  El historial completo vive en esta tabla y solo
+  desaparece si desaparece la alerta que lo contiene.
+  <b>US-18:</b> changed_by y changed_at dan la trazabilidad
+  de quien atendio y cuando.
+end note
+
+note bottom of alerts
+  <b>Denormalizacion deliberada:</b> status y
+  last_status_change_at son derivables de la ultima
+  fila de alert_status_changes. Se mantienen en la
+  raiz porque US-08 exige contar alertas pendientes
+  al cargar la pantalla de inicio, y hacerlo por
+  agregacion sobre el historial en cada carga seria
+  innecesariamente costoso. La consistencia la
+  garantiza el propio agregado Alert, unico punto
+  que escribe ambas tablas dentro de una transaccion.
+end note
+
+!include _dblegend.iuml
+caption Alertas, gravedad y trazabilidad de estados (US-08, US-09, US-15, US-16, US-18, US-19)
+@enduml

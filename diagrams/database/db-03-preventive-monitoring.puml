@@ -1,0 +1,79 @@
+@startuml
+title Database Diagram - Bounded Context: Preventive Monitoring (schema monitoring)
+!include _dbstyle.iuml
+
+entity "iam.users" as users EXT {
+  * **id** : UUID <<PK>>
+}
+entity "elder_care.older_adults" as older_adults EXT {
+  * **id** : UUID <<PK>>
+}
+
+entity "**monitoring.record_types**" as record_types OWN {
+  * **code** : VARCHAR(30) <<PK>>
+  --
+  * display_name : VARCHAR(80)
+  o unit : VARCHAR(20)
+  o min_valid_value : NUMERIC(10,2)
+  o max_valid_value : NUMERIC(10,2)
+  * requires_value : BOOLEAN = TRUE
+  * is_active : BOOLEAN = TRUE
+  --
+  <b>CK</b> min_valid_value < max_valid_value
+  <b>CK</b> requires_value = FALSE OR unit IS NOT NULL
+}
+
+entity "**monitoring.health_records**" as health_records OWN {
+  * **id** : UUID <<PK>>
+  --
+  * older_adult_id : UUID <<FK>>
+  * record_type_code : VARCHAR(30) <<FK>>
+  o measurement_value : NUMERIC(10,2)
+  o note : TEXT
+  * source : VARCHAR(20) <<CK>>
+  * recorded_by : UUID <<FK>>
+  * recorded_at : TIMESTAMPTZ = NOW()
+  --
+  <b>CK</b> source IN (3 valores de RecordSource)
+  <b>CK</b> measurement_value IS NOT NULL OR note IS NOT NULL
+  <b>CK</b> measurement_value >= 0
+  <b>IX</b> (older_adult_id, recorded_at DESC)
+  <b>IX</b> (older_adult_id, record_type_code, recorded_at DESC)
+}
+
+entity "**monitoring.monitoring_rules**" as monitoring_rules OWN {
+  * **id** : UUID <<PK>>
+  --
+  * older_adult_id : UUID <<FK>>
+  * record_type_code : VARCHAR(30) <<FK>>
+  o min_value : NUMERIC(10,2)
+  o max_value : NUMERIC(10,2)
+  * severity : VARCHAR(10) <<CK>>
+  * is_active : BOOLEAN = TRUE
+  * created_at : TIMESTAMPTZ = NOW()
+  --
+  <b>CK</b> severity IN ('HIGH','MEDIUM','LOW')
+  <b>CK</b> min_value IS NOT NULL OR max_value IS NOT NULL
+  <b>CK</b> min_value <= max_value
+  <b>UQ</b> (older_adult_id, record_type_code, severity)
+  WHERE is_active  -- indice parcial
+}
+
+older_adults ||--o{ health_records : "registra su estado en\nON DELETE CASCADE"
+older_adults ||--o{ monitoring_rules : "configura\nON DELETE CASCADE"
+record_types ||--o{ health_records : "tipifica\nON DELETE RESTRICT"
+record_types ||--o{ monitoring_rules : "delimita\nON DELETE RESTRICT"
+users ||--o{ health_records : "captura el registro\nON DELETE RESTRICT"
+
+note bottom of record_types
+  <b>3FN:</b> la unidad de medida depende del tipo de
+  registro, no del registro individual. Almacenarla
+  en health_records habria creado la dependencia
+  transitiva id -> record_type_code -> unit.
+  Por eso este unico enumerado se promovio a tabla
+  de catalogo en lugar de resolverse con un CHECK.
+end note
+
+!include _dblegend.iuml
+caption Registros de salud, catalogo de tipos y reglas de monitoreo (US-11, US-15, US-17)
+@enduml

@@ -1,0 +1,96 @@
+@startuml
+title Database Diagram - Bounded Context: Elder Care (schema elder_care)
+!include _dbstyle.iuml
+
+entity "iam.users" as users EXT {
+  * **id** : UUID <<PK>>
+  --
+  email : VARCHAR(255) <<UQ>>
+  role : VARCHAR(20)
+}
+
+entity "**elder_care.older_adults**" as older_adults OWN {
+  * **id** : UUID <<PK>>
+  --
+  o user_id : UUID <<FK, UQ>>
+  * first_name : VARCHAR(100)
+  * last_name : VARCHAR(100)
+  * birth_date : DATE
+  o address_street : VARCHAR(160)
+  o address_district : VARCHAR(80)
+  o address_city : VARCHAR(80)
+  o emergency_contact_name : VARCHAR(160)
+  o emergency_contact_phone : VARCHAR(20)
+  o assigned_provider_id : UUID <<FK>>
+  * is_monitoring_active : BOOLEAN = FALSE
+  * created_at : TIMESTAMPTZ = NOW()
+  --
+  <b>CK</b> is_monitoring_active = FALSE OR
+  (address_* y emergency_* IS NOT NULL)
+  <b>CK</b> emergency_contact_phone cumple el patron
+  <b>UQ</b> (user_id)
+}
+
+entity "**elder_care.care_providers**" as care_providers OWN {
+  * **id** : UUID <<PK>>
+  --
+  * user_id : UUID <<FK, UQ>>
+  * first_name : VARCHAR(100)
+  * last_name : VARCHAR(100)
+  * specialty : VARCHAR(120)
+  o institution : VARCHAR(160)
+  * is_active : BOOLEAN = TRUE
+  * created_at : TIMESTAMPTZ = NOW()
+  --
+  <b>UQ</b> (user_id)
+}
+
+entity "**elder_care.family_caregivers**" as family_caregivers OWN {
+  * **id** : UUID <<PK>>
+  --
+  * user_id : UUID <<FK, UQ>>
+  * first_name : VARCHAR(100)
+  * last_name : VARCHAR(100)
+  * phone_number : VARCHAR(20) <<CK>>
+  o alternate_phone : VARCHAR(20) <<CK>>
+  * created_at : TIMESTAMPTZ = NOW()
+  --
+  <b>UQ</b> (user_id)
+}
+
+entity "**elder_care.caregiver_assignments**" as caregiver_assignments OWN {
+  * **id** : UUID <<PK>>
+  --
+  * older_adult_id : UUID <<FK>>
+  * family_caregiver_id : UUID <<FK>>
+  * relationship : VARCHAR(30) <<CK>>
+  * is_emergency_authorized : BOOLEAN = FALSE
+  * assigned_at : TIMESTAMPTZ = NOW()
+  o revoked_at : TIMESTAMPTZ
+  --
+  <b>CK</b> relationship IN (5 valores de RelationshipType)
+  <b>CK</b> revoked_at IS NULL OR revoked_at > assigned_at
+  <b>UQ</b> (older_adult_id, family_caregiver_id)
+  WHERE revoked_at IS NULL  -- indice parcial
+}
+
+users ||--o| older_adults : "tiene cuenta\nON DELETE SET NULL"
+users ||--|| care_providers : "tiene cuenta\nON DELETE RESTRICT"
+users ||--|| family_caregivers : "tiene cuenta\nON DELETE RESTRICT"
+care_providers ||--o{ older_adults : "atiende a\n(0..1 activo por adulto mayor)"
+older_adults ||--o{ caregiver_assignments : "es acompanado por\nON DELETE CASCADE"
+family_caregivers ||--o{ caregiver_assignments : "acompana a\nON DELETE RESTRICT"
+
+note bottom of caregiver_assignments
+  <b>1FN:</b> la lista de cuidadores no se guarda como
+  arreglo en older_adults, sino como tabla propia.
+  <b>US-20:</b> assigned_provider_id es una sola columna,
+  de modo que un adulto mayor no puede tener dos
+  proveedores activos simultaneamente.
+  <b>Dato derivado no almacenado:</b> la edad se calcula
+  desde birth_date, nunca se persiste.
+end note
+
+!include _dblegend.iuml
+caption Perfiles, vinculacion con el proveedor de salud y asignacion de cuidadores (US-20, US-21)
+@enduml
